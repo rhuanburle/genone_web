@@ -9,16 +9,9 @@ class AppBarCustomized {
       elevation: 0,
       leading: const Icon(Icons.menu),
       flexibleSpace: Container(
-        decoration: BoxDecoration(
-          border: const Border(bottom: BorderSide.none),
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: <Color>[
-              Colors.white,
-              Colors.blue.shade800,
-            ],
-          ),
+        decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide.none),
+          color: Color.fromRGBO(55, 156, 210, 1),
         ),
       ),
       bottom: PreferredSize(
@@ -48,19 +41,12 @@ class AppBarCustomized {
     );
   }
 
-  static bootomSheet() {
-    return Container(
-      height: 100,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[
-            Colors.white,
-            Colors.blue.shade800,
-          ],
-        ),
-      ),
-    );
-  }
+  // static bootomSheet() {
+  //   return Container(
+  //     height: 100,
+  //     decoration: const BoxDecoration(
+  //       color: Color.fromRGBO(55, 156, 210, 1),
+  //     ),
+  //   );
+  // }
 }
