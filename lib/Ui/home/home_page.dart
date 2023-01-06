@@ -6,6 +6,7 @@ import '../../global_widgets/appBar_customized.dart';
 import '../../utils/app_images.dart';
 import 'common_widgets/production_biomolecules_bloc.dart';
 import 'common_widgets/service_multiomica_bloc.dart';
+import 'common_widgets/uncomplicated_biotechnology.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -137,185 +138,13 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                             )))
                   ],
                 )),
-            MediaQuery.of(context).size.width < 800
-                ? Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.only(top: 100, bottom: 70),
-                        decoration: const BoxDecoration(
-                          border: Border(top: BorderSide.none),
-                          image: DecorationImage(
-                            image: AssetImage(AppImages.homeBiomoleculas),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        // alignment: Alignment.topCenter,
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(20),
-                        decoration: const BoxDecoration(
-                          color: Color.fromRGBO(73, 174, 228, 1),
-                          border: Border(top: BorderSide.none),
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(AppImages.iconBiotech,
-                                height: 50, color: Colors.white),
-                            const AutoSizeText(
-                              "Biotecnologia Descomplicada",
-                              maxLines: 1,
-                              style: TextStyle(
-                                  fontSize: 40,
-                                  fontFamily: 'RobotoMono',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 40, top: 10),
-                              child: Text(
-                                  "Soluções da saúde humana à agricultura",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: 'RobotoMono',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white)),
-                            ),
-                            Container(
-                                width: 200,
-                                height: 50,
-                                child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        side: const BorderSide(
-                                            color: Colors.white, width: 2),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      shadowColor: Colors.black,
-                                    ),
-                                    onPressed: () {},
-                                    child: const Text(
-                                      "Saiba Mais",
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(73, 174, 228, 1),
-                                          fontSize: 16),
-                                    )))
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 100, bottom: 70),
-                        decoration: const BoxDecoration(
-                          border: Border(top: BorderSide.none),
-                          image: DecorationImage(
-                            image: AssetImage(AppImages.homeBiomoleculas2),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                : Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          height: 400,
-                          padding: const EdgeInsets.only(top: 100, bottom: 70),
-                          decoration: const BoxDecoration(
-                            border: Border(top: BorderSide.none),
-                            image: DecorationImage(
-                              image: AssetImage(AppImages.homeBiomoleculas),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          alignment: Alignment.topCenter,
-                          height: 400,
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(
-                            color: Color.fromRGBO(73, 174, 228, 1),
-                            border: Border(top: BorderSide.none),
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset(AppImages.iconBiotech,
-                                  height: 50, color: Colors.white),
-                              const Padding(
-                                padding: EdgeInsets.only(top: 40),
-                                child: AutoSizeText(
-                                  "Biotecnologia Descomplicada",
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontSize: 40,
-                                      fontFamily: 'RobotoMono',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(bottom: 40, top: 10),
-                                child: AutoSizeText(
-                                    "Soluções da saúde humana à agricultura",
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontFamily: 'RobotoMono',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white)),
-                              ),
-                              Container(
-                                width: 200,
-                                height: 50,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      side: const BorderSide(
-                                          color: Colors.white, width: 2),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    shadowColor: Colors.black,
-                                  ),
-                                  onPressed: () {},
-                                  child: const Text(
-                                    "Saiba Mais",
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(73, 174, 228, 1),
-                                        fontSize: 16),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          height: 400,
-                          padding: const EdgeInsets.only(top: 100, bottom: 70),
-                          decoration: const BoxDecoration(
-                            border: Border(top: BorderSide.none),
-                            image: DecorationImage(
-                              image: AssetImage(AppImages.homeBiomoleculas2),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+            AnimatedCrossFade(
+                firstChild: UncomplicatedBiotechnology().biotecBannerColum(),
+                secondChild: UncomplicatedBiotechnology().biotecBannerRow(),
+                crossFadeState: MediaQuery.of(context).size.width > 800
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
+                duration: const Duration(milliseconds: 500)),
             Container(
               padding: const EdgeInsets.only(
                   top: 80, bottom: 70, left: 10, right: 10),
@@ -335,40 +164,44 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                       height: 7,
                       color: const Color.fromRGBO(73, 174, 228, 1)),
                   const SizedBox(height: 40),
-                  MediaQuery.of(context).size.width > 1000
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: ProductionBiomoleculesBloc()
-                                    .genesBloc("big")),
-                            const SizedBox(width: 10),
-                            Expanded(
-                                child: ProductionBiomoleculesBloc()
-                                    .oligonucleotideosBloc("big")),
-                            const SizedBox(width: 10),
-                            Expanded(
-                                child: ProductionBiomoleculesBloc()
-                                    .PeptideosBloc("big")),
-                          ],
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: ProductionBiomoleculesBloc()
-                                    .genesBloc("small")),
-                            Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: ProductionBiomoleculesBloc()
-                                    .oligonucleotideosBloc("small")),
-                            Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: ProductionBiomoleculesBloc()
-                                    .PeptideosBloc("small")),
-                          ],
-                        ),
+                  AnimatedCrossFade(
+                      firstChild: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: ProductionBiomoleculesBloc()
+                                  .genesBloc("big")),
+                          const SizedBox(width: 10),
+                          Expanded(
+                              child: ProductionBiomoleculesBloc()
+                                  .oligonucleotideosBloc("big")),
+                          const SizedBox(width: 10),
+                          Expanded(
+                              child: ProductionBiomoleculesBloc()
+                                  .PeptideosBloc("big")),
+                        ],
+                      ),
+                      secondChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: ProductionBiomoleculesBloc()
+                                  .genesBloc("small")),
+                          Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: ProductionBiomoleculesBloc()
+                                  .oligonucleotideosBloc("small")),
+                          Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: ProductionBiomoleculesBloc()
+                                  .PeptideosBloc("small")),
+                        ],
+                      ),
+                      crossFadeState: MediaQuery.of(context).size.width > 1000
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
+                      duration: const Duration(milliseconds: 500)),
                 ],
               ),
             ),
@@ -387,15 +220,47 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
               color: const Color.fromRGBO(73, 174, 228, 1),
             ),
             const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(child: ServiceMultiomicaBloc().genomicaBloc("big")),
-                Expanded(child: ServiceMultiomicaBloc().metagenomicaBloc("big")),
-                Expanded(child: ServiceMultiomicaBloc().proteomicaBloc("big")),
-              ],
-            )
+            AnimatedCrossFade(
+              firstChild: Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ServiceMultiomicaBloc().genomicaBloc("big"),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: ServiceMultiomicaBloc().metagenomicaBloc("big"),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                        child: ServiceMultiomicaBloc().proteomicaBloc("big")),
+                  ],
+                ),
+              ),
+              secondChild: Padding(
+                padding: const EdgeInsets.only(
+                    top: 15, bottom: 15, left: 15, right: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ServiceMultiomicaBloc().genomicaBloc("small"),
+                    const SizedBox(height: 15),
+                    ServiceMultiomicaBloc().metagenomicaBloc("small"),
+                    const SizedBox(height: 15),
+                    ServiceMultiomicaBloc().proteomicaBloc("small"),
+                  ],
+                ),
+              ),
+              crossFadeState: MediaQuery.of(context).size.width > 1000
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+              duration: const Duration(milliseconds: 500),
+            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),

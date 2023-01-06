@@ -9,4 +9,7 @@ class AppImages {
   static const String peptidesynthHome = "assets/images/peptidesynth_home.png";
   static const String multiomicaHome = "assets/images/multiomica_home.jpg";
   static const String multiomicaGenoneHome = "assets/images/multiomica_genone_home.jpg";
+  static const String metagenomicsHome = "assets/images/metagenomics_home.png";
+  static const String proteomicHome = "assets/images/proteomic_home.png";
+  static const String dnaHome = "assets/images/dna_home.png";
 }
