@@ -5,4 +5,8 @@ class AppImages {
   static const String homeBiomoleculas2 = "assets/images/ciencia_2_home.webp";
   static const String iconBiotech = "assets/images/icon_biotech.png";
   static const String genesynthGenes = "assets/images/genesynth_genes.png";
+  static const String oligosynthHome = "assets/images/oligosynth_home.png";
+  static const String peptidesynthHome = "assets/images/peptidesynth_home.png";
+  static const String multiomicaHome = "assets/images/multiomica_home.jpg";
+  static const String multiomicaGenoneHome = "assets/images/multiomica_genone_home.jpg";
 }

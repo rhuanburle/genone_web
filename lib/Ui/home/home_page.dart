@@ -1,8 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../../global_widgets/appBar_customized.dart';
 import '../../utils/app_images.dart';
-import 'global_widgets/bloc_widgets.dart';
+import 'common_widgets/production_biomolecules_bloc.dart';
+import 'common_widgets/service_multiomica_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -314,37 +317,85 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                     ],
                   ),
             Container(
-                padding: const EdgeInsets.only(
-                    top: 80, bottom: 70, left: 10, right: 10),
-                child: Expanded(
-                  child: Column(
-                    children: [
-                      const AutoSizeText(
-                        "Produção de Biomoléculas",
-                        maxLines: 1,
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontFamily: 'RobotoMono',
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 40),
-                      Container(
-                          width: 50,
-                          height: 7,
-                          color: const Color.fromRGBO(73, 174, 228, 1)),
-                      const SizedBox(height: 40),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          BlocWidgets().genesBloc(),
-                          BlocWidgets().oligonucleotideosBloc(),
-                          BlocWidgets().PeptideosBloc(),
-                        ],
-                      ),
-                          // :
-                    ],
+              padding: const EdgeInsets.only(
+                  top: 80, bottom: 70, left: 10, right: 10),
+              child: Column(
+                children: [
+                  const AutoSizeText(
+                    "Produção de Biomoléculas",
+                    maxLines: 1,
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontFamily: 'RobotoMono',
+                        fontWeight: FontWeight.bold),
                   ),
-                )),
+                  const SizedBox(height: 40),
+                  Container(
+                      width: 50,
+                      height: 7,
+                      color: const Color.fromRGBO(73, 174, 228, 1)),
+                  const SizedBox(height: 40),
+                  MediaQuery.of(context).size.width > 1000
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                child: ProductionBiomoleculesBloc()
+                                    .genesBloc("big")),
+                            const SizedBox(width: 10),
+                            Expanded(
+                                child: ProductionBiomoleculesBloc()
+                                    .oligonucleotideosBloc("big")),
+                            const SizedBox(width: 10),
+                            Expanded(
+                                child: ProductionBiomoleculesBloc()
+                                    .PeptideosBloc("big")),
+                          ],
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: ProductionBiomoleculesBloc()
+                                    .genesBloc("small")),
+                            Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: ProductionBiomoleculesBloc()
+                                    .oligonucleotideosBloc("small")),
+                            Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: ProductionBiomoleculesBloc()
+                                    .PeptideosBloc("small")),
+                          ],
+                        ),
+                ],
+              ),
+            ),
+            const AutoSizeText(
+              "Serviços em multiômica",
+              maxLines: 1,
+              style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'RobotoMono',
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 40),
+            Container(
+              width: 50,
+              height: 7,
+              color: const Color.fromRGBO(73, 174, 228, 1),
+            ),
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: ServiceMultiomicaBloc().genomicaBloc("big")),
+                Expanded(child: ServiceMultiomicaBloc().metagenomicaBloc("big")),
+                Expanded(child: ServiceMultiomicaBloc().proteomicaBloc("big")),
+              ],
+            )
           ],
         ),
       ),
