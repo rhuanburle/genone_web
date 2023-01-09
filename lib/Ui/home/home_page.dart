@@ -1,15 +1,20 @@
 import 'dart:typed_data';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../global_widgets/appBar_customized.dart';
 import '../../utils/app_images.dart';
+import 'common_widgets/contact_form.dart';
+import 'common_widgets/others_bloc.dart';
 import 'common_widgets/production_biomolecules_bloc.dart';
 import 'common_widgets/service_multiomica_bloc.dart';
 import 'common_widgets/uncomplicated_biotechnology.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +22,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBarCustomized.appBar(),
       // bottomSheet: AppBarCustomized.bootomSheet(),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           children: [
             Container(
@@ -67,7 +73,7 @@ class HomePage extends StatelessWidget {
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             side:
-                                const BorderSide(color: Colors.white, width: 2),
+                            const BorderSide(color: Colors.white, width: 2),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           shadowColor: Colors.black,
@@ -112,7 +118,7 @@ A incessante busca por novas tecnologias que agreguem qualidade e praticidade ao
 
 Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempre atualizados com as tendências tecnológicas para oferecer o que há de mais moderno na prestação de serviços para empresas públicas e privadas do ramo da biotecnologia. Desde o estágio da elaboração do projeto de pesquisa até a validação dos produtos, da pesquisa básica à aplicada, do diagnóstico ao medicamento, pode contar conosco.  """,
                       style:
-                          TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+                      TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
                       textAlign: TextAlign.justify,
                     ),
                     const SizedBox(height: 40),
@@ -121,7 +127,7 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  const Color.fromRGBO(95, 191, 229, 1),
+                              const Color.fromRGBO(95, 191, 229, 1),
                               shape: RoundedRectangleBorder(
                                 side: const BorderSide(
                                     color: Color.fromRGBO(95, 191, 229, 1),
@@ -134,14 +140,17 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                             child: const Text(
                               "Casos de Sucesso - Publicações",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                              TextStyle(color: Colors.white, fontSize: 16),
                             )))
                   ],
                 )),
             AnimatedCrossFade(
                 firstChild: UncomplicatedBiotechnology().biotecBannerColum(),
                 secondChild: UncomplicatedBiotechnology().biotecBannerRow(),
-                crossFadeState: MediaQuery.of(context).size.width > 800
+                crossFadeState: MediaQuery
+                    .of(context)
+                    .size
+                    .width > 800
                     ? CrossFadeState.showSecond
                     : CrossFadeState.showFirst,
                 duration: const Duration(milliseconds: 500)),
@@ -198,7 +207,10 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                                   .PeptideosBloc("small")),
                         ],
                       ),
-                      crossFadeState: MediaQuery.of(context).size.width > 1000
+                      crossFadeState: MediaQuery
+                          .of(context)
+                          .size
+                          .width > 1000
                           ? CrossFadeState.showFirst
                           : CrossFadeState.showSecond,
                       duration: const Duration(milliseconds: 500)),
@@ -255,12 +267,113 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                   ],
                 ),
               ),
-              crossFadeState: MediaQuery.of(context).size.width > 1000
+              crossFadeState: MediaQuery
+                  .of(context)
+                  .size
+                  .width > 1000
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
               duration: const Duration(milliseconds: 500),
             ),
             const SizedBox(height: 40),
+            const AutoSizeText(
+              "Outros Serviços",
+              maxLines: 1,
+              style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'RobotoMono',
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 40),
+            Container(
+                width: 50,
+                height: 7,
+                color: const Color.fromRGBO(73, 174, 228, 1)),
+            const SizedBox(height: 40),
+            AnimatedCrossFade(
+              firstChild: Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: OthersBloc().storageDnaBloc("big"),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: OthersBloc().bensonBloc("big"),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(child: OthersBloc().pcrBloc("big")),
+                  ],
+                ),
+              ),
+              secondChild: Padding(
+                padding: const EdgeInsets.only(
+                    top: 15, bottom: 15, left: 15, right: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    OthersBloc().storageDnaBloc("small"),
+                    const SizedBox(height: 15),
+                    OthersBloc().bensonBloc("small"),
+                    const SizedBox(height: 15),
+                    OthersBloc().pcrBloc("small"),
+                  ],
+                ),
+              ),
+              crossFadeState: MediaQuery
+                  .of(context)
+                  .size
+                  .width > 1000
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+              duration: const Duration(milliseconds: 500),
+            ),
+            const SizedBox(height: 40),
+            const AutoSizeText(
+              "Clientes",
+              maxLines: 1,
+              style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'RobotoMono',
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 40),
+            Container(
+                width: 50,
+                height: 7,
+                color: const Color.fromRGBO(73, 174, 228, 1)),
+            const SizedBox(height: 40),
+            Obx(() {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ctrl.clientBannerCount == 1
+                      ? Image.asset(AppImages.logos1To10)
+                      : ctrl.clientBannerCount == 2
+                      ? Image.asset(AppImages.logos11To20)
+                      : ctrl.clientBannerCount == 3
+                      ? Image.asset(AppImages.logos21To30)
+                      : ctrl.clientBannerCount == 4
+                      ? Image.asset(AppImages.logos31To40)
+                      : Image.asset(AppImages.logos41To50),
+                  ctrl.clientBannerCount == 1
+                      ? Image.asset(AppImages.logos11To20)
+                      : ctrl.clientBannerCount == 2
+                      ? Image.asset(AppImages.logos21To30)
+                      : ctrl.clientBannerCount == 3
+                      ? Image.asset(AppImages.logos31To40)
+                      : ctrl.clientBannerCount == 4
+                      ? Image.asset(AppImages.logos41To50)
+                      : Image.asset(AppImages.logos51To60),
+                ],
+              );
+            }),
+            const SizedBox(height: 40),
+            const ContactForm(),
           ],
         ),
       ),
