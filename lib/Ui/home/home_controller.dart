@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -6,13 +7,14 @@ class HomeController extends GetxController {
   RxInt clientBannerCount = 1.obs;
 
   @override
-  void onInit() {
-    super.onInit();
-    startTimer();
+  void initializer() {
+    if (clientBannerCount.value == 1) {
+      startTimer();
+    }
   }
 
   startTimer() {
-    timer = Timer(const Duration(seconds: 3), () {
+    timer = Timer(const Duration(seconds: 5), () {
       if (clientBannerCount.value == 4) {
         clientBannerCount.value = 1;
       } else {

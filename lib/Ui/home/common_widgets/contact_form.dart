@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 
@@ -6,6 +7,7 @@ class ContactForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final widthMedia = MediaQuery.of(context).size.width;
     return Container(
       // height: 300,
       decoration: BoxDecoration(
@@ -16,7 +18,10 @@ class ContactForm extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
+              widthMedia > 1000 ?
+              AnimatedContainer(
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
                 width: 500,
                 height: 500,
                 decoration: BoxDecoration(
@@ -26,81 +31,84 @@ class ContactForm extends StatelessWidget {
                     colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
                   ),
                 ),
-              ),
+              ) : Container(),
               Expanded(
                 flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: 500,
-                      color: Colors.white,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
-                          border: OutlineInputBorder(),
-                          labelText: 'Seu nome',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 500,
+                        color: Colors.white,
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            border: OutlineInputBorder(),
+                            labelText: 'Seu nome',
+                          ),
+                          ),
                         ),
-                        ),
-                      ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: 500,
-                      color: Colors.white,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          border: OutlineInputBorder(),
-                          labelText: 'Seu e-mail',
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: 500,
-                      color: Colors.white,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.phone),
-                          border: OutlineInputBorder(),
-                          labelText: 'Telefone',
+                      const SizedBox(height: 10),
+                      Container(
+                        width: 500,
+                        color: Colors.white,
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(),
+                            labelText: 'Seu e-mail',
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: 500,
-                      color: Colors.white,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.edit_note_outlined),
-                          border: OutlineInputBorder(),
-                          labelText: 'Assunto',
+                      const SizedBox(height: 10),
+                      Container(
+                        width: 500,
+                        color: Colors.white,
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.phone),
+                            border: OutlineInputBorder(),
+                            labelText: 'Telefone',
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: 500,
-                      color: Colors.white,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.message),
-                          labelText: 'Sua mensagem',
-                          border: OutlineInputBorder(),
+                      const SizedBox(height: 10),
+                      Container(
+                        width: 500,
+                        color: Colors.white,
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.edit_note_outlined),
+                            border: OutlineInputBorder(),
+                            labelText: 'Assunto',
+                          ),
                         ),
-                        maxLines: 5,
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      width: 200,
-                      height: 50,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Enviar mensagem'),),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      Container(
+                        width: 500,
+                        color: Colors.white,
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.message),
+                            labelText: 'Sua mensagem',
+                            border: OutlineInputBorder(),
+                          ),
+                          maxLines: 5,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: 200,
+                        height: 50,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Enviar mensagem'),),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Flexible(
@@ -109,9 +117,11 @@ class ContactForm extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: const [
-                        Icon(Icons.location_on_outlined),
-                        Text("GenOne Soluções em Biotecnologia"),
+                      children: [
+                        const Icon(Icons.location_on_outlined),
+                       (widthMedia < 1000 && widthMedia > 750) || widthMedia > 1250 ?
+                        const Text("GenOne Soluções em Biotecnologia") :
+                        const Text("GenOne Soluções\nem Biotecnologia"),
                       ],
                     ),
                     const SizedBox(height: 15),
@@ -129,7 +139,7 @@ class ContactForm extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Text("Email: vendas@genone.com.br"),
+                    const Text("Email: vendas@genone.com.br"),
                     const SizedBox(height: 200),
                   ],
                 ),

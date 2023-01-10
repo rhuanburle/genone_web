@@ -18,6 +18,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ctrl.initializer();
+    final widthMedia = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBarCustomized.appBar(),
       // bottomSheet: AppBarCustomized.bootomSheet(),
@@ -147,10 +149,7 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
             AnimatedCrossFade(
                 firstChild: UncomplicatedBiotechnology().biotecBannerColum(),
                 secondChild: UncomplicatedBiotechnology().biotecBannerRow(),
-                crossFadeState: MediaQuery
-                    .of(context)
-                    .size
-                    .width > 800
+                crossFadeState: widthMedia > 800
                     ? CrossFadeState.showSecond
                     : CrossFadeState.showFirst,
                 duration: const Duration(milliseconds: 500)),
@@ -207,10 +206,7 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                                   .PeptideosBloc("small")),
                         ],
                       ),
-                      crossFadeState: MediaQuery
-                          .of(context)
-                          .size
-                          .width > 1000
+                      crossFadeState: widthMedia > 1000
                           ? CrossFadeState.showFirst
                           : CrossFadeState.showSecond,
                       duration: const Duration(milliseconds: 500)),
@@ -267,10 +263,7 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                   ],
                 ),
               ),
-              crossFadeState: MediaQuery
-                  .of(context)
-                  .size
-                  .width > 1000
+              crossFadeState: widthMedia > 1000
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
               duration: const Duration(milliseconds: 500),
@@ -324,10 +317,7 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                   ],
                 ),
               ),
-              crossFadeState: MediaQuery
-                  .of(context)
-                  .size
-                  .width > 1000
+              crossFadeState: widthMedia > 1000
                   ? CrossFadeState.showFirst
                   : CrossFadeState.showSecond,
               duration: const Duration(milliseconds: 500),
@@ -352,23 +342,24 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ctrl.clientBannerCount == 1
-                      ? Image.asset(AppImages.logos1To10)
+                      ? Flexible(child: Image.asset(AppImages.logos1To10))
                       : ctrl.clientBannerCount == 2
-                      ? Image.asset(AppImages.logos11To20)
+                      ? Flexible(child: Image.asset(AppImages.logos11To20))
                       : ctrl.clientBannerCount == 3
-                      ? Image.asset(AppImages.logos21To30)
+                      ? Flexible(child: Image.asset(AppImages.logos21To30))
                       : ctrl.clientBannerCount == 4
-                      ? Image.asset(AppImages.logos31To40)
-                      : Image.asset(AppImages.logos41To50),
-                  ctrl.clientBannerCount == 1
-                      ? Image.asset(AppImages.logos11To20)
-                      : ctrl.clientBannerCount == 2
-                      ? Image.asset(AppImages.logos21To30)
-                      : ctrl.clientBannerCount == 3
-                      ? Image.asset(AppImages.logos31To40)
-                      : ctrl.clientBannerCount == 4
-                      ? Image.asset(AppImages.logos41To50)
-                      : Image.asset(AppImages.logos51To60),
+                      ? Flexible(child: Image.asset(AppImages.logos31To40))
+                      : Flexible(child: Image.asset(AppImages.logos41To50)),
+
+                  ctrl.clientBannerCount == 1 && widthMedia > 600
+                      ? Flexible(child: Image.asset(AppImages.logos11To20))
+                      : ctrl.clientBannerCount == 2 && widthMedia > 600
+                      ? Flexible(child: Image.asset(AppImages.logos21To30))
+                      : ctrl.clientBannerCount == 3 && widthMedia > 600
+                      ? Flexible(child: Image.asset(AppImages.logos31To40))
+                      : ctrl.clientBannerCount == 4 && widthMedia > 600
+                      ? Flexible(child: Image.asset(AppImages.logos41To50))
+                      : widthMedia > 600 ? Flexible(child: Image.asset(AppImages.logos51To60)) : Container()
                 ],
               );
             }),
