@@ -1,8 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/Ui/home/home_controller.dart';
 import 'package:get/get.dart';
 import '../../global_widgets/appBar_customized.dart';
 import '../../utils/app_images.dart';
@@ -15,14 +13,15 @@ import 'common_widgets/uncomplicated_biotechnology.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final ScrollController _scrollController = ScrollController();
+  final ctrl = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
-    ctrl.initializer();
     final widthMedia = MediaQuery.of(context).size.width;
+    ctrl.initializer();
+
     return Scaffold(
-      appBar: AppBarCustomized.appBar(),
-      // bottomSheet: AppBarCustomized.bootomSheet(),
+      appBar: AppBarCustomized.appBar(context),
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
@@ -70,7 +69,11 @@ class HomePage extends StatelessWidget {
                       height: 40,
                       width: 150,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+                            duration: Duration(seconds: 2),
+                            curve: Curves.fastOutSlowIn,);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -138,7 +141,9 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
                               ),
                               shadowColor: Colors.black,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+
+                            },
                             child: const Text(
                               "Casos de Sucesso - Publicações",
                               style:
@@ -364,7 +369,7 @@ Com este conceito de trazer sempre inovação aos nossos clientes, estamos sempr
               );
             }),
             const SizedBox(height: 40),
-            const ContactForm(),
+            ContactForm(),
           ],
         ),
       ),

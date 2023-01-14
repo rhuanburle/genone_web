@@ -33,6 +33,9 @@ dependencies:
     sdk: flutter
   get: ^4.6.5
   auto_size_text: ^3.0.0
+  mailer: ^6.0.0
+  dio: ^4.0.6
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,18 +61,8 @@ flutter:
   fonts:
     - family: RobotoMono
       fonts:
-#        - asset: assets/fonts/Roboto-Regular.ttf
-#        - asset: assets/fonts/Roboto-Medium.ttf
-#        - asset: assets/fonts/Roboto-Bold.ttf
-#        - asset: assets/fonts/Roboto-Black.ttf
-#        - asset: assets/fonts/Roboto-Light.ttf
         - asset: assets/fonts/Roboto-Thin.ttf
-#        - asset: assets/fonts/Roboto-Italic.ttf
-#        - asset: assets/fonts/Roboto-MediumItalic.ttf
-#        - asset: assets/fonts/Roboto-BoldItalic.ttf
-#        - asset: assets/fonts/Roboto-BlackItalic.ttf
-#        - asset: assets/fonts/Roboto-LightItalic.ttf
-#        - asset: assets/fonts/Roboto-ThinItalic.ttf
+
 
 
   # The following line ensures that the Material Icons font is

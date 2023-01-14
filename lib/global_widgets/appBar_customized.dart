@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../routes/app_routes.dart';
 import '../utils/app_images.dart';
 
 class AppBarCustomized {
-  static AppBar appBar() {
+  static AppBar appBar(BuildContext context) {
     return AppBar(
-      elevation: 0,
-      leading: const Icon(Icons.menu),
+      elevation: 1,
+      leading: MediaQuery.of(context).size.width < 600 ? const Icon(Icons.menu) : const SizedBox(),
       flexibleSpace: Container(
         decoration: const BoxDecoration(
           border: Border(bottom: BorderSide.none),
@@ -26,6 +27,7 @@ class AppBarCustomized {
                 AppImages.logoGenone,
                 height: 50,
               ),
+              MediaQuery.of(context).size.width < 600 ?
               IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -33,6 +35,14 @@ class AppBarCustomized {
                   color: Colors.white,
                   size: 40,
                 ),
+              ) : Row(
+                children: [
+                  TextButton(onPressed: () {}, child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                  TextButton(onPressed: () {}, child: Text("|", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                  TextButton(onPressed: () {
+                    Get.toNamed(AppRoutes.registrationPage);
+                  }, child: Text("Cadastrar-se", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                ],
               ),
             ],
           ),
@@ -40,13 +50,4 @@ class AppBarCustomized {
       ),
     );
   }
-
-  // static bootomSheet() {
-  //   return Container(
-  //     height: 100,
-  //     decoration: const BoxDecoration(
-  //       color: Color.fromRGBO(55, 156, 210, 1),
-  //     ),
-  //   );
-  // }
 }

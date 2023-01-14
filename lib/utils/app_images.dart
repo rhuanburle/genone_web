@@ -22,4 +22,5 @@ class AppImages {
   static const String logos41To50 = "assets/images/logos_41x50.png";
   static const String logos51To60 = "assets/images/logos_51x60.png";
   static const String genone2Home = "assets/images/genone_2_home.jpg";
+  static const String logoGenoneSmall = "assets/images/logo_genone_small.png";
 }
