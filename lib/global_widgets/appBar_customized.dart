@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/utils/global_variables.dart';
 import 'package:get/get.dart';
 
 import '../routes/app_routes.dart';
 import '../utils/app_images.dart';
+
+GlobalVariables globalVariables = Get.put(GlobalVariables());
 
 class AppBarCustomized {
   static AppBar appBar(BuildContext context) {
@@ -23,9 +26,14 @@ class AppBarCustomized {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                AppImages.logoGenone,
-                height: 50,
+              InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoutes.homePage);
+                },
+                child: Image.asset(
+                  AppImages.logoGenone,
+                  height: 50,
+                ),
               ),
               MediaQuery.of(context).size.width < 600 ?
               IconButton(
@@ -35,15 +43,27 @@ class AppBarCustomized {
                   color: Colors.white,
                   size: 40,
                 ),
-              ) : Row(
+              ) : globalVariables.isLogin == false ? Row(
                 children: [
-                  TextButton(onPressed: () {}, child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),)),
-                  TextButton(onPressed: () {}, child: Text("|", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                  TextButton(onPressed: () {
+                    Get.toNamed(AppRoutes.loginPage);
+                  }, child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                  const Text("|", style: TextStyle(color: Colors.white, fontSize: 20),),
                   TextButton(onPressed: () {
                     Get.toNamed(AppRoutes.registrationPage);
-                  }, child: Text("Cadastrar-se", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                  }, child: const Text("Cadastrar-se", style: TextStyle(color: Colors.white, fontSize: 20),)),
                 ],
-              ),
+              ) : Row(
+                children: [
+                  Text("Olá, ${globalVariables.user.name} ", style: const TextStyle(color: Colors.white, fontSize: 20),),
+                  const Text("|", style: TextStyle(color: Colors.white, fontSize: 20),),
+                  TextButton(onPressed: () {
+
+                    globalVariables.isLogin.value = false;
+                    Get.toNamed(AppRoutes.homePage);
+                  }, child: const Text("Sair", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                ],
+              )
             ],
           ),
         ),

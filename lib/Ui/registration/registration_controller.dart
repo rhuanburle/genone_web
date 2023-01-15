@@ -33,10 +33,13 @@ class RegistrationController extends GetxController {
         );
       }
     } else if (registerCountPage.value != 1) {
-      if (zipCodeController.text.isNotEmpty &&
-          streetAddressController.text.isNotEmpty &&
-          cityController.text.isNotEmpty &&
-          stateController.text.isNotEmpty && phoneController.text.isNotEmpty) {
+      if (
+          // zipCodeController.text.isNotEmpty &&
+          // streetAddressController.text.isNotEmpty &&
+          // cityController.text.isNotEmpty &&
+          // stateController.text.isNotEmpty &&
+          phoneController.text.isNotEmpty
+      ) {
         sendNewUser();
       } else {
         Get.snackbar(
@@ -60,10 +63,10 @@ class RegistrationController extends GetxController {
         'email': emailController.text,
         'password': passwordController.text,
         'phone': phoneController.text,
-        'zipCode': zipCodeController.text,
-        'streetAddress': streetAddressController.text,
-        'city': cityController.text,
-        'state': stateController.text,
+        'zipCode': zipCodeController.text.isEmpty ? '' : zipCodeController.text,
+        'streetAddress': streetAddressController.text.isEmpty ? '' : streetAddressController.text,
+        'city': cityController.text.isEmpty ? '' : cityController.text,
+        'state': stateController.text.isEmpty ? '' : stateController.text,
         'dateCreated': DateTime.now().toString(),
         'dateUpdated': DateTime.now().toString(),
       },

@@ -10,19 +10,15 @@ class RegistrationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final heightMedia = MediaQuery.of(context).size.height;
+    final widthMedia = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBarCustomized.appBar(context),
       body: Center(
         child: GetBuilder<RegistrationController>(builder: (ctrl) {
           return Container(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.6,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width * 0.6,
+            height: widthMedia >= 700 ? heightMedia * 0.6 : heightMedia * 0.8,
+            width: widthMedia >= 700 ?  widthMedia * 0.6 : widthMedia * 0.9,
             decoration: BoxDecoration(
               color: const Color.fromRGBO(73, 174, 228, 1),
               borderRadius: BorderRadius.circular(20),
@@ -52,7 +48,7 @@ class RegistrationPage extends StatelessWidget {
                               Image.asset(
                                 AppImages.logoGenoneSmall, height: 200,
                                 width: 200,),
-                              const Text("Bem vindo a tela de registro",
+                              const Text("Bem vindo a tela de registro", textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20)),
                               const SizedBox(height: 10),

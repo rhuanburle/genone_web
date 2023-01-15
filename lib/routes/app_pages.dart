@@ -3,6 +3,8 @@ import 'package:genone_web_flutter/Ui/registration/registration_page.dart';
 import 'package:get/route_manager.dart';
 import '../Ui/home/home_binding.dart';
 import '../Ui/home/home_page.dart';
+import '../Ui/login/login_binding.dart';
+import '../Ui/login/login_page.dart';
 import 'app_routes.dart';
 
 
@@ -17,6 +19,11 @@ class AppPages {
       name: AppRoutes.registrationPage,
       page: () => RegistrationPage(),
       binding: RegistrationBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.loginPage,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
     ),
   ];
 }
