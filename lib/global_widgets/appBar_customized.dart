@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/services/auth_service.dart';
 import 'package:genone_web_flutter/utils/global_variables.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +7,7 @@ import '../routes/app_routes.dart';
 import '../utils/app_images.dart';
 
 GlobalVariables globalVariables = Get.put(GlobalVariables());
+AuthService authService = Get.put(AuthService());
 
 class AppBarCustomized {
   static AppBar appBar(BuildContext context) {
@@ -55,10 +57,10 @@ class AppBarCustomized {
                 ],
               ) : Row(
                 children: [
-                  Text("Olá, ${globalVariables.user.name} ", style: const TextStyle(color: Colors.white, fontSize: 20),),
+                  Text("Olá, ${"logado"} ", style: const TextStyle(color: Colors.white, fontSize: 20),),
                   const Text("|", style: TextStyle(color: Colors.white, fontSize: 20),),
                   TextButton(onPressed: () {
-
+                    authService.signOut();
                     globalVariables.isLogin.value = false;
                     Get.toNamed(AppRoutes.homePage);
                   }, child: const Text("Sair", style: TextStyle(color: Colors.white, fontSize: 20),)),

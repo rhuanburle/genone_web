@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
   final ctrl = Get.put(HomeController());
 
+
   @override
   Widget build(BuildContext context) {
     final widthMedia = MediaQuery.of(context).size.width;

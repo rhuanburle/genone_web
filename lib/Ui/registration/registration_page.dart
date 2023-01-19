@@ -18,7 +18,7 @@ class RegistrationPage extends StatelessWidget {
         child: GetBuilder<RegistrationController>(builder: (ctrl) {
           return Container(
             height: widthMedia >= 700 ? heightMedia * 0.6 : heightMedia * 0.8,
-            width: widthMedia >= 700 ?  widthMedia * 0.6 : widthMedia * 0.9,
+            width: widthMedia >= 700 ? widthMedia * 0.6 : widthMedia * 0.9,
             decoration: BoxDecoration(
               color: const Color.fromRGBO(73, 174, 228, 1),
               borderRadius: BorderRadius.circular(20),
@@ -46,9 +46,12 @@ class RegistrationPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Image.asset(
-                                AppImages.logoGenoneSmall, height: 200,
-                                width: 200,),
-                              const Text("Bem vindo a tela de registro", textAlign: TextAlign.center,
+                                AppImages.logoGenoneSmall,
+                                height: 200,
+                                width: 200,
+                              ),
+                              const Text("Bem vindo a tela de registro",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20)),
                               const SizedBox(height: 10),
@@ -61,148 +64,82 @@ class RegistrationPage extends StatelessWidget {
                           ))),
                   Expanded(
                     flex: 2,
-                    child: Obx(() {
-                      return Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
+                      height: double.infinity,
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // TextField(
+                          //   controller: ctrl.nameController,
+                          //   decoration: const InputDecoration(
+                          //     border: OutlineInputBorder(
+                          //       borderRadius: BorderRadius.all(
+                          //           Radius.circular(10)),
+                          //     ),
+                          //     labelText: 'Nome',
+                          //   ),
+                          // ),
+                          // const SizedBox(height: 10),
+                          TextField(
+                            controller: ctrl.emailController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                              labelText: 'Email',
+                            ),
                           ),
-                        ),
-                        height: double.infinity,
-                        width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ctrl.registerCountPage == 1 ?
-                            Column(
-                              children: [
-                                TextField(
-                                  controller: ctrl.nameController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    labelText: 'Nome',
+                          TextField(
+                            obscureText: true,
+                            controller: ctrl.passwordController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                              labelText: 'Senha',
+                            ),
+                          ),
+                          TextField(
+                            obscureText: true,
+                            controller: ctrl.confirmPasswordController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                              ),
+                              labelText: 'Confirmar Senha',
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 50,
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                  const Color.fromRGBO(73, 174, 228, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                const SizedBox(height: 10),
-                                TextField(
-                                  controller: ctrl.emailController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    labelText: 'Email',
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                TextField(
-                                  obscureText: true,
-                                  controller: ctrl.passwordController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    labelText: 'Senha',
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                TextField(
-                                  obscureText: true,
-                                  controller: ctrl.confirmPasswordController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    labelText: 'Confirmar Senha',
-                                  ),
-                                ),
-                              ],
-                            ) :
-                                Column(
-                                  children: [
-                                    TextField(
-                                      controller: ctrl.phoneController,
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: 'Telefone',
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    TextField(
-                                      controller: ctrl.zipCodeController,
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: 'CEP',
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    TextField(
-                                      controller: ctrl.streetAddressController,
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: 'Nome da rua',
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    TextField(
-                                      controller: ctrl.cityController,
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: 'Cidade',
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    TextField(
-                                      controller: ctrl.stateController,
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                        labelText: 'Estado',
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                            const SizedBox(height: 10),
-                            Container(
-                              width: double.infinity,
-                              height: 50,
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromRGBO(73, 174, 228, 1),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                ctrl.register();
-                              }, child: ctrl.registerCountPage != 1 ? const Text("Cadastrar") : const Text("Próximo")),
-                            )
-                          ],
-                        ),
-                      );
-                    }),
+                                onPressed: () {
+                                  ctrl.register(context);
+                                },
+                                child: Text("Cadastrar")),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),

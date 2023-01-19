@@ -1,7 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/routes/app_routes.dart';
+import 'package:genone_web_flutter/utils/app_constant.dart';
 import 'package:get/get.dart';
+
+import '../../services/auth_service.dart';
 
 class RegistrationController extends GetxController {
   TextEditingController nameController = TextEditingController();
@@ -14,15 +19,13 @@ class RegistrationController extends GetxController {
   TextEditingController cityController = TextEditingController();
   TextEditingController stateController = TextEditingController();
 
-  RxInt registerCountPage = 1.obs;
+  AuthService authService = Get.put(AuthService());
 
-  void register() {
-    if (registerCountPage.value == 1) {
-      if (nameController.text.isNotEmpty &&
-          emailController.text.isNotEmpty &&
-          passwordController.text.isNotEmpty &&
-          confirmPasswordController.text.isNotEmpty) {
-        registerCountPage.value++;
+  void register(context) {
+    if (passwordController.text == confirmPasswordController.text) {
+      if (emailController.text.isNotEmpty ||
+          passwordController.text.isNotEmpty) {
+        sendNewUser(context);
       } else {
         Get.snackbar(
           'Erro',
@@ -32,53 +35,27 @@ class RegistrationController extends GetxController {
           colorText: Colors.white,
         );
       }
-    } else if (registerCountPage.value != 1) {
-      if (
-          // zipCodeController.text.isNotEmpty &&
-          // streetAddressController.text.isNotEmpty &&
-          // cityController.text.isNotEmpty &&
-          // stateController.text.isNotEmpty &&
-          phoneController.text.isNotEmpty
-      ) {
-        sendNewUser();
-      } else {
-        Get.snackbar(
-          'Erro',
-          'Preencha todos os campos',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-        );
-      }
+    } else {
+      Get.snackbar(
+        'Erro',
+        'As senhas não coincidem',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
-    registerCountPage.value++;
   }
 
-  void sendNewUser() {
-    var dio = Dio();
-    dio.post(
-      'http://localhost:8080/user/',
-      data: {
-        'name': nameController.text,
-        'email': emailController.text,
-        'password': passwordController.text,
-        'phone': phoneController.text,
-        'zipCode': zipCodeController.text.isEmpty ? '' : zipCodeController.text,
-        'streetAddress': streetAddressController.text.isEmpty ? '' : streetAddressController.text,
-        'city': cityController.text.isEmpty ? '' : cityController.text,
-        'state': stateController.text.isEmpty ? '' : stateController.text,
-        'dateCreated': DateTime.now().toString(),
-        'dateUpdated': DateTime.now().toString(),
-      },
-    );
-    Get.snackbar(
-      'Sucesso',
-      'Usuário cadastrado com sucesso',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green,
-      colorText: Colors.white,
-    );
+  void sendNewUser(context) async {
+    authService.signUp(email: emailController.text, password: passwordController.text).then((value) => {
+      if (value == "Signed up") {
+        Get.toNamed(AppRoutes.loginPage)
+      } else {
+        Get.snackbar("Erro", 'Email ou senha incorretos',
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.red,
+            colorText: Colors.white)
+      }
+    });
   }
-
-
 }

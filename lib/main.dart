@@ -1,19 +1,25 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'Ui/home/home_page.dart';
 import 'routes/app_pages.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Genone',
@@ -21,7 +27,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
-
       getPages: AppPages.pages,
     );
   }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "973188247715",
+    "project_id": "genone-c0ddb",
+    "storage_bucket": "genone-c0ddb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973188247715:android:8418f63d42f1340604cf16",
+        "android_client_info": {
+          "package_name": "com.example.genone_web_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973188247715-itcacg8hd61l458hi1shb8h5doeebcqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOi7BQGD32xcrb9nIeah1QKgimIEvZkKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973188247715-itcacg8hd61l458hi1shb8h5doeebcqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

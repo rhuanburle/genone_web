@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:genone_web_flutter/Ui/registration/registration_binding.dart';
 import 'package:genone_web_flutter/Ui/registration/registration_page.dart';
+import 'package:genone_web_flutter/utils/global_variables.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import '../Ui/home/home_binding.dart';
 import '../Ui/home/home_page.dart';
@@ -7,8 +10,8 @@ import '../Ui/login/login_binding.dart';
 import '../Ui/login/login_page.dart';
 import 'app_routes.dart';
 
-
 class AppPages {
+
   static final List<GetPage> pages = [
     GetPage(
       name: AppRoutes.homePage,
