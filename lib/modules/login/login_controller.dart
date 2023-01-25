@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
-import 'package:genone_web_flutter/services/auth_service.dart';
 import 'package:get/get.dart';
+import '../../data/providers/services/auth_service.dart';
 import '../../utils/global_variables.dart';
 
 class LoginController extends GetxController {

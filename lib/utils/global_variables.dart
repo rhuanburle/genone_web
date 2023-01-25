@@ -1,4 +1,3 @@
-import 'package:genone_web_flutter/model/user.dart';
 import 'package:get/get.dart';
 
 class GlobalVariables {

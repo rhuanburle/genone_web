@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/Ui/home/home_controller.dart';
+import '../home_controller.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 import 'package:get/get.dart';
 

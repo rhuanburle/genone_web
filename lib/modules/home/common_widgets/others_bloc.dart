@@ -1,8 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/Ui/home/home_controller.dart';
-
 import '../../../utils/app_images.dart';
+import '../home_controller.dart';
 
 final ctrl = HomeController();
 

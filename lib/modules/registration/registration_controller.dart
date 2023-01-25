@@ -1,12 +1,8 @@
-import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
-import 'package:genone_web_flutter/utils/app_constant.dart';
 import 'package:get/get.dart';
-
-import '../../services/auth_service.dart';
+import '../../data/providers/services/auth_service.dart';
 
 class RegistrationController extends GetxController {
   TextEditingController nameController = TextEditingController();

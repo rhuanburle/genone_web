@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/services/auth_service.dart';
 import 'package:genone_web_flutter/utils/global_variables.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/providers/services/auth_service.dart';
 import '../routes/app_routes.dart';
 import '../utils/app_images.dart';
 

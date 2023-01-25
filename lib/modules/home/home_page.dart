@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/Ui/home/home_controller.dart';
 import 'package:get/get.dart';
 import '../../global_widgets/appBar_customized.dart';
 import '../../utils/app_images.dart';
@@ -9,6 +8,7 @@ import 'common_widgets/others_bloc.dart';
 import 'common_widgets/production_biomolecules_bloc.dart';
 import 'common_widgets/service_multiomica_bloc.dart';
 import 'common_widgets/uncomplicated_biotechnology.dart';
+import 'home_controller.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
