@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 import '../../global_widgets/appBar_customized.dart';
@@ -16,9 +17,11 @@ class LoginPage extends StatelessWidget {
       appBar: AppBarCustomized.appBar(context),
       body: Center(
         child: GetBuilder<LoginController>(builder: (ctrl) {
+          print("widthMedia: $widthMedia");
+          print("heightMedia: $heightMedia");
           return Container(
-            height: widthMedia >= 700 ? heightMedia * 0.6 : heightMedia * 0.8,
-            width: widthMedia >= 700 ?  widthMedia * 0.6 : widthMedia * 0.9,
+            height: heightMedia <= 550 ? 500 : widthMedia >= 1266 ? 400 : widthMedia >= 700 ? heightMedia * 0.8 : heightMedia * 0.8,
+            width: widthMedia >= 1266 ? 900 : widthMedia >= 700 ?  widthMedia * 0.6 : widthMedia * 0.9,
             decoration: BoxDecoration(
               color: const Color.fromRGBO(73, 174, 228, 1),
               borderRadius: BorderRadius.circular(20),
@@ -73,6 +76,27 @@ class LoginPage extends StatelessWidget {
                           children: [
                             Column(
                               children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 30),
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                       "Bem vindo a GenOne.",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(73, 174, 228, 1), fontSize: 24),
+                                      ),
+                                      ctrl.isFistLogin ?
+                                      const Text(
+                                        "\nSeu cadastro foi realizado com sucesso, faça seu primeiro login para continuar.",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Color.fromRGBO(73, 174, 228, 1), fontSize: 24),
+                                      ) : Container(),
+                                    ],
+                                  ),
+
+                                ),
                                 TextField(
                                   controller: ctrl.emailController,
                                   decoration: const InputDecoration(
@@ -109,7 +133,8 @@ class LoginPage extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    ctrl.login();
+                                    Get.toNamed(AppRoutes.registerUserPage);
+                                    // ctrl.getLogin();
                                   }, child: const Text("Entrar")),
                             )
                           ],

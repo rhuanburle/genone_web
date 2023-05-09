@@ -3,18 +3,15 @@ import '../home_controller.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 import 'package:get/get.dart';
 
-class ContactForm extends StatelessWidget {
-  ContactForm({Key? key}) : super(key: key);
+class Footer extends StatelessWidget {
+  Footer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final widthMedia = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final widthMedia = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (ctrl) {
       return Container(
-        // height: 300,
+          width: widthMedia > 1366 ? 1366 : widthMedia,
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: const BorderRadius.only(
@@ -31,6 +28,8 @@ class ContactForm extends StatelessWidget {
                         width: 500,
                         height: 500,
                         decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),),
                           image: DecorationImage(
                             image: const AssetImage(AppImages.genone2Home),
                             fit: BoxFit.cover,

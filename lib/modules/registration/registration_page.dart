@@ -17,8 +17,8 @@ class RegistrationPage extends StatelessWidget {
       body: Center(
         child: GetBuilder<RegistrationController>(builder: (ctrl) {
           return Container(
-            height: widthMedia >= 700 ? heightMedia * 0.6 : heightMedia * 0.8,
-            width: widthMedia >= 700 ? widthMedia * 0.6 : widthMedia * 0.9,
+            height: widthMedia >= 1266 ? 400 : widthMedia >= 700 ? heightMedia * 0.6 : heightMedia * 0.8,
+            width: widthMedia >= 1266 ? 900 : widthMedia >= 700 ?  widthMedia * 0.6 : widthMedia * 0.9,
             decoration: BoxDecoration(
               color: const Color.fromRGBO(73, 174, 228, 1),
               borderRadius: BorderRadius.circular(20),
@@ -76,19 +76,8 @@ class RegistrationPage extends StatelessWidget {
                       height: double.infinity,
                       width: double.infinity,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // TextField(
-                          //   controller: ctrl.nameController,
-                          //   decoration: const InputDecoration(
-                          //     border: OutlineInputBorder(
-                          //       borderRadius: BorderRadius.all(
-                          //           Radius.circular(10)),
-                          //     ),
-                          //     labelText: 'Nome',
-                          //   ),
-                          // ),
-                          // const SizedBox(height: 10),
                           TextField(
                             controller: ctrl.emailController,
                             decoration: const InputDecoration(
@@ -99,6 +88,7 @@ class RegistrationPage extends StatelessWidget {
                               labelText: 'Email',
                             ),
                           ),
+                          const SizedBox(height: 15),
                           TextField(
                             obscureText: true,
                             controller: ctrl.passwordController,
@@ -110,6 +100,7 @@ class RegistrationPage extends StatelessWidget {
                               labelText: 'Senha',
                             ),
                           ),
+                          const SizedBox(height: 15),
                           TextField(
                             obscureText: true,
                             controller: ctrl.confirmPasswordController,
@@ -121,7 +112,8 @@ class RegistrationPage extends StatelessWidget {
                               labelText: 'Confirmar Senha',
                             ),
                           ),
-                          Container(
+                          const SizedBox(height: 15),
+                          SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: ElevatedButton(
@@ -133,9 +125,9 @@ class RegistrationPage extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  ctrl.register(context);
+                                  ctrl.register();
                                 },
-                                child: Text("Cadastrar")),
+                                child: const Text("Cadastrar")),
                           )
                         ],
                       ),

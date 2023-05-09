@@ -1,4 +1,5 @@
-class User {
+class UserRequest {
+  String id;
   String name;
   String email;
   String phone;
@@ -9,7 +10,8 @@ class User {
   String dateCreated;
   String dateUpdated;
 
-  User({
+  UserRequest({
+    required this.id,
     required this.name,
     required this.email,
     required this.phone,
@@ -21,7 +23,8 @@ class User {
     required this.dateUpdated,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory UserRequest.fromJson(Map<String, dynamic> json) => UserRequest(
+    id: json["id"] ?? '',
     name: json["name"] ?? '',
     email: json["email"],
     phone: json["phone"] ?? '',
@@ -34,6 +37,7 @@ class User {
   );
 
   Map<String, dynamic> toJson() => {
+    "id": id,
     "name": name,
     "email": email,
     "phone": phone,
@@ -44,5 +48,4 @@ class User {
     "dateCreated": dateCreated,
     "dateUpdated": dateUpdated,
   };
-
 }
