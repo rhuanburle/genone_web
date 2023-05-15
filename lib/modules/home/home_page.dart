@@ -28,8 +28,8 @@ class HomePage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SizedBox(
-                width: widthMedia > 1366 ? 1366 : widthMedia,
+              Container(
+                constraints: const BoxConstraints(maxWidth: 1366),
                 child: Column(
                   children: [
                     Container(
