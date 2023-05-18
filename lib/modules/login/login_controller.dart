@@ -19,10 +19,17 @@ class LoginController extends GetxController {
         globalVariables.isLogin.value = true;
         Get.toNamed(AppRoutes.homePage);
       } else {
-        Get.snackbar("Erro", 'Email ou senha incorretos',
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.blue,
-            colorText: Colors.white);
+        Get.rawSnackbar(
+          title: 'Atenção',
+          message: 'Email ou senha incorretos',
+          icon: const Icon(
+            Icons.warning_amber_rounded,
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.blue,
+          borderRadius: 10.0,
+          margin: EdgeInsets.all(20.0),
+          snackPosition: SnackPosition.BOTTOM,);
       }
     } catch (e) {
       print(e);

@@ -25,35 +25,54 @@ class RegistrationController extends GetxController {
           passwordController.text.isNotEmpty) {
         sendNewUser();
       } else {
-        Get.snackbar(
-          'Erro',
-          'Preencha todos os campos',
+        Get.rawSnackbar(
+          title: 'Atenção',
+          message: 'Preencha todos os campos',
+          icon: const Icon(
+            Icons.warning_amber_rounded,
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.blue,
+          borderRadius: 10.0,
+          margin: EdgeInsets.all(20.0),
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
         );
       }
     } else {
-      Get.snackbar(
-        'Erro',
-        'As senhas não coincidem',
+      Get.rawSnackbar(
+        title: 'Atenção',
+        message: 'As senhas não coincidem',
+        icon: const Icon(
+          Icons.warning_amber_rounded,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.blue,
+        borderRadius: 10.0,
+        margin: EdgeInsets.all(20.0),
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
       );
     }
   }
 
   sendNewUser() async {
-    try{
-      final response = await repository.signUp(email: emailController.text, password: passwordController.text);
+    try {
+      final response = await repository.signUp(
+          email: emailController.text, password: passwordController.text);
       if (response == "Signed up") {
         Get.offAllNamed(AppRoutes.loginPage, arguments: true);
       } else {
-        Get.snackbar("Erro", 'Email ou senha incorretos',
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.blue,
-            colorText: Colors.white);
+        Get.rawSnackbar(
+          title: 'Atenção',
+          message: 'Email ou senha incorretos',
+          icon: const Icon(
+            Icons.warning_amber_rounded,
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.blue,
+          borderRadius: 10.0,
+          margin: EdgeInsets.all(20.0),
+          snackPosition: SnackPosition.BOTTOM,
+        );
       }
     } catch (e) {
       print(e);

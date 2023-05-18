@@ -1,0 +1,79 @@
+import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/global_widgets/appBar_customized.dart';
+import 'package:genone_web_flutter/modules/home/common_widgets/contact_form.dart';
+import 'package:genone_web_flutter/modules/home_user/home_user_controller.dart';
+import 'package:genone_web_flutter/modules/home_user/widgets/options_block_widget.dart';
+import 'package:genone_web_flutter/modules/home_user/widgets/personal_data_widget.dart';
+import 'package:get/get.dart';
+
+
+class HomeUserPage extends StatelessWidget {
+  const HomeUserPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ctrl = Get.find<HomeUserController>();
+    final widthMedia = MediaQuery
+        .of(context)
+        .size
+        .width;
+    return Scaffold(
+      appBar: AppBarCustomized.appBar(context),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Obx(() {
+            return Container(
+              constraints: const BoxConstraints(maxWidth: 1366),
+              child: ctrl.isInitLoading.value
+                  ? const Padding(
+                    padding: EdgeInsets.only(top: 200),
+                    child: Column(
+                      children: [
+                        Text("Loading...", style: TextStyle(fontSize: 20),),
+                        SizedBox( height: 20,),
+                        SizedBox( width: 70, height: 70,child: CircularProgressIndicator()),
+                      ],
+                    ),
+                  )
+                  : Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 30),
+                    child: Text("Bem vindo Rhuan!", style: TextStyle(fontSize: 20),),
+                  ),
+
+                  const Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: [
+                      PersonalDataWidget(name: "Dados Pessoais", icon: Icons.person_pin, route: "/dados_pessoais",),
+                      PersonalDataWidget(name: "Endereços Cadastrados", icon: Icons.edit_location_alt_outlined, route: "/enderecos",),
+                    ],
+                  ),
+
+                  const SizedBox(height: 40,),
+                  const Text("Gerenciamento de Pedidos", style: TextStyle(fontSize: 25)),
+                  const SizedBox(height: 20,),
+                  const Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: [
+                      OptionsBlocWidget(name: "Pedidos Online", icon: Icons.shopping_cart_outlined, route: "/pedidos_online",),
+                      OptionsBlocWidget(name: "Minhas Cotações", icon: Icons.note_alt_outlined, route: "/pedidos_online",),
+                      OptionsBlocWidget(name: "Meus Pedidos", icon: Icons.sticky_note_2_outlined, route: "/pedidos_online",),
+                      OptionsBlocWidget(name: "Meus Vetores", icon: Icons.content_paste_search_outlined, route: "/pedidos_online",),
+                    ],
+                  ),
+
+                  const SizedBox(height: 150),
+                  Footer(),
+                ],
+              ),
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}

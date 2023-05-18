@@ -1,4 +1,6 @@
-import 'package:genone_web_flutter/modules/register_user/registerUserBinding.dart';
+import 'package:genone_web_flutter/modules/home_user/home_user_binding.dart';
+import 'package:genone_web_flutter/modules/home_user/home_user_page.dart';
+import 'package:genone_web_flutter/modules/register_user/register_user_binding.dart';
 import 'package:genone_web_flutter/modules/register_user/register_user_page.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
@@ -32,6 +34,11 @@ class AppPages {
       name: AppRoutes.registerUserPage,
       page: () => const RegisterUserPage(),
       binding: RegisterUserBinding(),
+    ),
+    GetPage(
+        name: AppRoutes.homeUserPage,
+        page: () => const HomeUserPage(),
+        binding: HomeUserBinding(),
     ),
   ];
 }

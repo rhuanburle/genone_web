@@ -9,7 +9,10 @@ class RegisterUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ctrl = Get.find<RegisterUserController>();
-    final widthMedia = MediaQuery.of(context).size.width;
+    final widthMedia = MediaQuery
+        .of(context)
+        .size
+        .width;
     print(widthMedia);
     return Scaffold(
       appBar: AppBarCustomized.appBar(context),
@@ -57,8 +60,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.nameController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Nome *',
                               ),
@@ -68,8 +70,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.lastNameController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Sobrenome *',
                               ),
@@ -79,34 +80,64 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.companyController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Empresa/Instituição',
                               ),
                             ),
                           ),
-                          // SizedBox(
-                          //   width: 500,
-                          //   child: Row(
-                          //     children: [
-                          //       TextField(
-                          //         controller: ctrl.cnpjCpfController,
-                          //         inputFormatters: [],
-                          //         decoration: InputDecoration(
-                          //           border: OutlineInputBorder(),
-                          //           labelText: 'CNPJ/CPF *',
-                          //         ),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
+                          SizedBox(
+                            width: 500,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  width: widthMedia >= 580 ? 300 : 200,
+                                  child: TextField(
+                                    controller: ctrl.cnpjCpfController,
+                                    inputFormatters: ctrl.isCpf.value ? [ctrl.maskCpf] : [ctrl.maskCnpj],
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      labelText: 'CNPJ/CPF *',
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                                Obx(() {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .spaceEvenly,
+                                    children: [
+                                      Text("CNPJ",
+                                          style: TextStyle(
+                                              color: ctrl.isCpf.value ? Colors
+                                                  .black : Colors.blue,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold)),
+                                      Switch(value: ctrl.isCpf.value,
+                                        onChanged: (value) =>
+                                        ctrl.isCpf.value = value,
+                                        activeColor: Colors.blue,
+                                        inactiveTrackColor: Colors.blue,
+                                        inactiveThumbColor: Colors.blue,
+                                      ),
+                                      Text("CPF",
+                                          style: TextStyle(
+                                              color: ctrl.isCpf.value ? Colors
+                                                  .blue : Colors.black,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  );
+                                }),
+                              ],
+                            ),
+                          ),
                           SizedBox(
                             width: 500,
                             child: TextField(
                               controller: ctrl.phoneController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              inputFormatters: [ctrl.maskPhone],
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Telefone *',
                               ),
@@ -116,19 +147,23 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.cepController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              inputFormatters: [ctrl.maskCep],
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'CEP *',
                               ),
+                              onChanged: (value) {
+                                if (value.length == 9) {
+                                  ctrl.searchCep();
+                                }
+                              },
                             ),
                           ),
                           SizedBox(
                             width: 500,
                             child: TextField(
                               controller: ctrl.addressController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Rua/Lagradouro *',
                               ),
@@ -138,7 +173,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.districtController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Bairro *',
                               ),
@@ -148,8 +183,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.cityController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Cidade *',
                               ),
@@ -159,8 +193,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.stateController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Estado *',
                               ),
@@ -170,8 +203,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.countryController,
-                              inputFormatters: [],
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Pais *',
                               ),
@@ -181,7 +213,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 500,
                             child: TextField(
                               controller: ctrl.complementController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Complemento',
                               ),
@@ -191,7 +223,7 @@ class RegisterUserPage extends StatelessWidget {
                             width: 1000,
                             child: TextField(
                               controller: ctrl.commentsController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Observações adicionais',
                               ),
@@ -204,7 +236,8 @@ class RegisterUserPage extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: widthMedia < 1145 ? 500 : null,
-                                  child: const Text("Métodos de pagamento utilizados:",
+                                  child: const Text(
+                                      "Métodos de pagamento utilizados:",
                                       style: TextStyle(
                                           color: Colors.blue,
                                           fontSize: 20,
@@ -269,7 +302,9 @@ class RegisterUserPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await ctrl.sendForm(context);
+                      },
                       child: const Text('Finalizar Cadastro')),
                 )
               ],

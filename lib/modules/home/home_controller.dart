@@ -40,25 +40,40 @@ class HomeController extends GetxController {
       "subject": subjectController.text,
       "message": messageController.text
     };
-    dio.post("https://genone-c0ddb-default-rtdb.firebaseio.com/contact.json", data: data).then((value) => {
-      if (value.statusCode == 200) {
-        Get.snackbar(
-          'Sucesso',
-          'Email enviado com sucesso',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-        )
-      } else {
-        Get.snackbar(
-          'Erro',
-          'Erro ao enviar email',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-        )
-      }
-    });
+    dio
+        .post("https://genone-c0ddb-default-rtdb.firebaseio.com/contact.json",
+            data: data)
+        .then((value) => {
+              if (value.statusCode == 200)
+                {
+                  Get.rawSnackbar(
+                    title: 'Sucesso',
+                    message: 'Email enviado com sucesso',
+                    icon: const Icon(
+                      Icons.warning_amber_rounded,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blue,
+                    borderRadius: 10.0,
+                    margin: EdgeInsets.all(20.0),
+                    snackPosition: SnackPosition.BOTTOM,
+                  )
+                }
+              else
+                {
+                  Get.rawSnackbar(
+                    title: 'Atenção',
+                    message: 'Erro ao enviar email',
+                    icon: const Icon(
+                      Icons.warning_amber_rounded,
+                      color: Colors.white,
+                    ),
+                    backgroundColor: Colors.blue,
+                    borderRadius: 10.0,
+                    margin: EdgeInsets.all(20.0),
+                    snackPosition: SnackPosition.BOTTOM,
+                  )
+                }
+            });
   }
 }
-
