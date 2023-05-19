@@ -10,10 +10,14 @@ class RealtimeDatabase with AppUtil{
     try {
       final response = await dio.post("$_baseUrl$path.json", data: data);
       loggerInfo(message: "Create Realtimedatabase: ${response.data}");
-      return response.data;
+      if(response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
     } on DioError catch (e) {
       loggerError(message:e);
-      return null;
+      return false;
     }
   }
 
@@ -39,9 +43,9 @@ class RealtimeDatabase with AppUtil{
     }
   }
 
-  get(String path) async {
+  get({required userId, required String path}) async {
     try {
-      final response = await dio.get("$_baseUrl$path.json");
+      final response = await dio.get("$_baseUrl$path$userId.json");
       loggerInfo(message: "Get Realtimedatabase: ${response.data}");
       return response.data;
     } on DioError catch (e) {

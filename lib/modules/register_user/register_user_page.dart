@@ -13,7 +13,6 @@ class RegisterUserPage extends StatelessWidget {
         .of(context)
         .size
         .width;
-    print(widthMedia);
     return Scaffold(
       appBar: AppBarCustomized.appBar(context),
       body: SingleChildScrollView(
@@ -92,14 +91,18 @@ class RegisterUserPage extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: widthMedia >= 580 ? 300 : 200,
-                                  child: TextField(
-                                    controller: ctrl.cnpjCpfController,
-                                    inputFormatters: ctrl.isCpf.value ? [ctrl.maskCpf] : [ctrl.maskCnpj],
-                                    decoration: const InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      labelText: 'CNPJ/CPF *',
-                                    ),
-                                  ),
+                                  child: Obx(() {
+                                    return TextField(
+                                      controller: ctrl.cnpjCpfController,
+                                      inputFormatters: ctrl.isCpf.value ? [
+                                        ctrl.maskCpf
+                                      ] : [ctrl.maskCnpj],
+                                      decoration: const InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        labelText: 'CNPJ/CPF *',
+                                      ),
+                                    );
+                                  }),
                                 ),
                                 const SizedBox(width: 20),
                                 Obx(() {

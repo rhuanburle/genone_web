@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../home_controller.dart';
+import 'package:genone_web_flutter/modules/home/home_controller.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 import 'package:get/get.dart';
 
 class Footer extends StatelessWidget {
-  Footer({Key? key}) : super(key: key);
+  const Footer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +75,7 @@ class Footer extends StatelessWidget {
                         width: 500,
                         color: Colors.white,
                         child: TextField(
+                          inputFormatters: [ctrl.maskPhone],
                           controller: ctrl.phoneController,
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.phone),
@@ -116,7 +117,7 @@ class Footer extends StatelessWidget {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            ctrl.sendEmail();
+                            ctrl.sendEmail(context);
                           },
                           child: const Text('Enviar mensagem'),
                         ),
@@ -133,22 +134,21 @@ class Footer extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Icons.location_on_outlined),
-                        (widthMedia < 1000 && widthMedia > 750) ||
-                                widthMedia > 1250
+                        (widthMedia < 1000 && widthMedia > 750) || widthMedia > 1250
                             ? const Text("GenOne Soluções em Biotecnologia")
                             : const Text("GenOne Soluções\nem Biotecnologia"),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Icon(Icons.phone),
                         Text("Tel: (21) 3285-9105"),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Icon(Icons.email),
                         Text(
                           " Mensagem:",

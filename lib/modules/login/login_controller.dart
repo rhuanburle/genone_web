@@ -1,38 +1,55 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
 import 'package:genone_web_flutter/modules/login/login_repository.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
+import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../../utils/global_variables.dart';
 
-class LoginController extends GetxController {
+class LoginController extends GetxController with AppUtil {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final globalVariables = Get.put(GlobalVariables());
   final repository = Get.find<LoginRepository>();
   bool isFistLogin = Get.arguments ?? false;
+  final storage = GetStorage();
+  RxBool isLoading = false.obs;
 
-  Future getLogin() async {
+  Future getLogin(context) async {
     try{
+      isLoading.value = true;
       final response = await repository.signIn(email: emailController.text, password: passwordController.text);
-      if (response == "Signed in") {
+      bool isFirstLogin = await repository.checkIsFirstLogin(userId: storage.read('userId')) ?? true;
+
+      checkLoginStatus(response, isFirstLogin, context);
+    } catch (e) {
+      loggerError(message: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void checkLoginStatus(response, bool isFirstLogin, context) async {
+    try{
+      if (response == "Signed in" && !isFirstLogin) {
         globalVariables.isLogin.value = true;
-        Get.toNamed(AppRoutes.homePage);
+        loggerInfo(message: 'Login Success');
+        Get.toNamed(AppRoutes.homeUserPage);
+      } else if (response == "Signed in" && isFirstLogin) {
+        globalVariables.isLogin.value = true;
+        loggerInfo(message: 'First Login');
+        isLoading.value = false;
+        Get.toNamed(AppRoutes.registerUserPage);
       } else {
-        Get.rawSnackbar(
-          title: 'Atenção',
-          message: 'Email ou senha incorretos',
-          icon: const Icon(
-            Icons.warning_amber_rounded,
-            color: Colors.white,
-          ),
-          backgroundColor: Colors.blue,
-          borderRadius: 10.0,
-          margin: EdgeInsets.all(20.0),
-          snackPosition: SnackPosition.BOTTOM,);
+        await showDialog(context: context, builder: (context) => const DialogGeneral(
+            title: 'Atenção',
+            message: 'Email ou senha incorretos'));
       }
     } catch (e) {
-      print(e);
+      loggerError(message: e.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 }

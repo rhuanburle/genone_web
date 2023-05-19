@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/utils/global_variables.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:get_storage/get_storage.dart';
 import '../data/providers/services/auth_service.dart';
 import '../routes/app_routes.dart';
 import '../utils/app_images.dart';
 
 GlobalVariables globalVariables = Get.put(GlobalVariables());
 AuthService authService = Get.put(AuthService());
-final prefs = SharedPreferences.getInstance();
+final storage = GetStorage();
 RxBool isAuth = false.obs;
 String email = "";
 
 class AppBarCustomized {
   static AppBar appBar(BuildContext context) {
-    prefs.then((value) {
-      if (value.getBool('auth') == true) {
-        isAuth.value = true;
-        email = value.getString('userEmail')!;
-      } else {
-        isAuth.value = false;
-        email = "";
-      }
-    });
+    if(storage.read('auth') != null) {
+      isAuth.value = true;
+      email = storage.read('userEmail')!;
+    } else {
+      isAuth.value = false;
+    }
+
     return AppBar(
       elevation: 1,
       leading: MediaQuery.of(context).size.width < 600
@@ -107,7 +104,7 @@ class AppBarCustomized {
                                     onPressed: () {
                                       authService.signOut();
                                       isAuth.value = false;
-                                      Get.toNamed(AppRoutes.homePage);
+                                      // Get.toNamed(AppRoutes.homePage);
                                     },
                                     child: const Text(
                                       "Orçamentos ",
@@ -123,7 +120,7 @@ class AppBarCustomized {
                                     onPressed: () {
                                       authService.signOut();
                                       isAuth.value = false;
-                                      Get.toNamed(AppRoutes.homePage);
+                                      // Get.toNamed(AppRoutes.homePage);
                                     },
                                     child: const Text(
                                       "Cadastro ",
@@ -139,7 +136,7 @@ class AppBarCustomized {
                                     onPressed: () {
                                       authService.signOut();
                                       isAuth.value = false;
-                                      Get.toNamed(AppRoutes.homePage);
+                                      // Get.toNamed(AppRoutes.homePage);
                                     },
                                     child: const Text(
                                       "Sair",

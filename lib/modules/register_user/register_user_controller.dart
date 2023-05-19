@@ -36,13 +36,12 @@ class RegisterUserController extends GetxController with AppUtil {
   sendForm(context) async {
     bool isCreateSuccess = false;
     try {
-      // if(validateFields()) {
-      //   await getPaymentMethods();
-      //   await buildModelUserInfo();
-      //   isCreateSuccess = await repository.sendNewUserDetails(userSendInfo: userSendInfo.toJson());
-      // }
-
-      if(!isCreateSuccess) {
+      if(validateFields()) {
+        await getPaymentMethods();
+        await buildModelUserInfo();
+        isCreateSuccess = await repository.sendNewUserDetails(userSendInfo: userSendInfo.toJson());
+      }
+      if(isCreateSuccess) {
         await getShowDialog(context);
         Get.toNamed(AppRoutes.homeUserPage);
       }

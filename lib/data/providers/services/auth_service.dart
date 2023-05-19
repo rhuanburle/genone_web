@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:genone_web_flutter/utils/util.dart';
+import 'package:get_storage/get_storage.dart';
 
-class AuthService with ChangeNotifier {
+class AuthService with ChangeNotifier, AppUtil{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Stream<User?> get authStateChanges => _auth.authStateChanges();
+  final storage = GetStorage();
 
   String? token;
   String? userId;
@@ -19,17 +21,18 @@ class AuthService with ChangeNotifier {
         userId = _auth.currentUser!.uid;
         userEmail = _auth.currentUser!.email;
         expiryDate = DateTime.now().add(Duration(seconds: 3600));
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('auth', true);
-        await prefs.setString('token', token!);
-        await prefs.setString('userId', userId!);
-        await prefs.setString('userEmail', userEmail!);
-        await prefs.setString('expiryDate', expiryDate.toString());
+
+        storage.write('auth', true);
+        storage.write('token', token);
+        storage.write('userId', userId);
+        storage.write('userEmail', userEmail);
+        storage.write('expiryDate', expiryDate.toString());
       } else {
         return "Erro ao adicionar usuário";
       }
       return "Signed in";
     } on FirebaseAuthException catch (e) {
+      loggerError(message: e.toString());
       return e.message;
     }
   }
@@ -38,14 +41,9 @@ class AuthService with ChangeNotifier {
   Future signOut() async {
     try {
       await _auth.signOut();
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('auth', false);
-      await prefs.setString('token', "");
-      await prefs.setString('userId', "");
-      await prefs.setString('userEmail', "");
-      await prefs.setString('expiryDate', "");
+      storage.erase();
     } catch (e) {
-      print(e.toString());
+      loggerError(message: e.toString());
       return null;
     }
   }
@@ -55,6 +53,7 @@ class AuthService with ChangeNotifier {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       return "Signed up";
     } on FirebaseAuthException catch (e) {
+      loggerError(message: e.toString());
       return e.message;
     }
   }

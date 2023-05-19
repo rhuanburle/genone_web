@@ -5,4 +5,6 @@ class AppConstant {
 
   // Path RealTime DataBase
   static const String userinfoRealTime = 'userInfo';
+  static const String contactEmailRealTime = 'contactEmail';
+  static const String getUser = 'getUser';
 }

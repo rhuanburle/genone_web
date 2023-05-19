@@ -11,17 +11,24 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final heightMedia = MediaQuery.of(context).size.height;
-    final widthMedia = MediaQuery.of(context).size.width;
+    final heightMedia = MediaQuery
+        .of(context)
+        .size
+        .height;
+    final widthMedia = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Scaffold(
       appBar: AppBarCustomized.appBar(context),
       body: Center(
         child: GetBuilder<LoginController>(builder: (ctrl) {
-          print("widthMedia: $widthMedia");
-          print("heightMedia: $heightMedia");
           return Container(
-            height: heightMedia <= 550 ? 500 : widthMedia >= 1266 ? 400 : widthMedia >= 700 ? heightMedia * 0.8 : heightMedia * 0.8,
-            width: widthMedia >= 1266 ? 900 : widthMedia >= 700 ?  widthMedia * 0.6 : widthMedia * 0.9,
+            height: heightMedia <= 550 ? 500 : widthMedia >= 1266
+                ? 400
+                : widthMedia >= 700 ? heightMedia * 0.8 : heightMedia * 0.8,
+            width: widthMedia >= 1266 ? 900 : widthMedia >= 700 ? widthMedia *
+                0.6 : widthMedia * 0.9,
             decoration: BoxDecoration(
               color: const Color.fromRGBO(73, 174, 228, 1),
               borderRadius: BorderRadius.circular(20),
@@ -61,85 +68,89 @@ class LoginPage extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                          ),
+                      padding: const EdgeInsets.all(20),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
                         ),
-                        height: double.infinity,
-                        width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(bottom: 30),
-                                  child: Column(
-                                    children: [
-                                      const Text(
-                                       "Bem vindo a GenOne.",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(73, 174, 228, 1), fontSize: 24),
-                                      ),
-                                      ctrl.isFistLogin ?
-                                      const Text(
-                                        "\nSeu cadastro foi realizado com sucesso, faça seu primeiro login para continuar.",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(73, 174, 228, 1), fontSize: 24),
-                                      ) : Container(),
-                                    ],
-                                  ),
+                      ),
+                      height: double.infinity,
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 30),
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      "Bem vindo a GenOne.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(
+                                              73, 174, 228, 1), fontSize: 24),
+                                    ),
+                                    ctrl.isFistLogin ?
+                                    const Text(
+                                      "\nSeu cadastro foi realizado com sucesso, faça seu primeiro login para continuar.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(
+                                              73, 174, 228, 1), fontSize: 24),
+                                    ) : Container(),
+                                  ],
+                                ),
 
-                                ),
-                                TextField(
-                                  controller: ctrl.emailController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    labelText: 'Email',
+                              ),
+                              TextField(
+                                controller: ctrl.emailController,
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10)),
                                   ),
+                                  labelText: 'Email',
                                 ),
-                                const SizedBox(height: 10),
-                                TextField(
-                                  obscureText: true,
-                                  controller: ctrl.passwordController,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10)),
-                                    ),
-                                    labelText: 'Senha',
+                              ),
+                              const SizedBox(height: 10),
+                              TextField(
+                                obscureText: true,
+                                controller: ctrl.passwordController,
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10)),
                                   ),
+                                  labelText: 'Senha',
                                 ),
-                              ],
-                            ),
-                            const SizedBox(height: 40),
-                            Container(
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 40),
+                          Obx(() {
+                            return SizedBox(
                               width: double.infinity,
                               height: 50,
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromRGBO(73, 174, 228, 1),
+                                    backgroundColor: const Color.fromRGBO(
+                                        73, 174, 228, 1),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
                                   onPressed: () {
-                                    Get.toNamed(AppRoutes.registerUserPage);
-                                    // ctrl.getLogin();
-                                  }, child: const Text("Entrar")),
-                            )
-                          ],
-                        ),
+                                    ctrl.getLogin(context);
+                                  }, child: ctrl.isLoading.value ? const CircularProgressIndicator() : const Text("Entrar")),
+                            );
+                          })
+                        ],
                       ),
+                    ),
                   ),
                 ],
               ),

@@ -46,6 +46,7 @@ mixin AppUtil {
   MaskTextInputFormatter maskDate = MaskTextInputFormatter(mask: "##/##/####", filter: {"#": RegExp(r'[0-9]')});
   MaskTextInputFormatter maskHour = MaskTextInputFormatter(mask: "##:##", filter: {"#": RegExp(r'[0-9]')});
   MaskTextInputFormatter maskMoney = MaskTextInputFormatter(mask: "###.###.###,##", filter: {"#": RegExp(r'[0-9]')});
+  MaskTextInputFormatter maskMail = MaskTextInputFormatter(mask: "####################", filter: {"#": RegExp(r'[a-zA-Z0-9@.]')});
 
 
   showRawSnackbar({required String title, required String message}) {
@@ -60,6 +61,12 @@ mixin AppUtil {
         borderRadius: 10.0,
         margin: EdgeInsets.all(20.0),
         snackPosition: SnackPosition.BOTTOM);
+  }
+
+  bool isEmailValid(String email) {
+    // Expressão regular para validar um endereço de email
+    final regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    return regex.hasMatch(email);
   }
 
 }
