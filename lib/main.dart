@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/modules/home/home_repository.dart';
+import 'package:genone_web_flutter/modules/new_quotation/new_quotation_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_storage/get_storage.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: NewQuotationPage(),
       getPages: AppPages.pages,
     );
   }

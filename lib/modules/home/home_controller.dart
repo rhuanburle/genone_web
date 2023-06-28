@@ -47,7 +47,7 @@ class HomeController extends GetxController with AppUtil {
             subject: subjectController.text,
             message: messageController.text);
 
-        bool isSendOk = await repository.sendEmalContact(emailContact: emailContact.toJson());
+        bool isSendOk = true;
 
         showInfoDialog(isSendOk: isSendOk, context: context);
       } else {

@@ -4,4 +4,5 @@ class AppRoutes {
   static const String loginPage = "/login_page.dart";
   static const String registerUserPage = "/register_user_page.dart";
   static const String homeUserPage = "/home_user_page.dart";
+  static const String newQuotationPage = "/new_quotation_page.dart";
 }

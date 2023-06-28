@@ -140,15 +140,15 @@ class Footer extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    const Row(
-                      children: [
+                    Row(
+                      children: const [
                         Icon(Icons.phone),
                         Text("Tel: (21) 3285-9105"),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    const Row(
-                      children: [
+                    Row(
+                      children: const [
                         Icon(Icons.email),
                         Text(
                           " Mensagem:",

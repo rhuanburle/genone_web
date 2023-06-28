@@ -64,12 +64,12 @@ class ServiceMultiomicaBloc {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: [
+                    children: const [
                       Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                       SizedBox(width: 5),
                       AutoSizeText("Sequenciamento de Pequenos Genomas",
@@ -83,7 +83,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Sequenciamento de Genomas\nComplexos",
@@ -98,7 +98,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Genotipagem",
@@ -113,7 +113,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Expressão Gênica ou Transcriptômica\npor RNAseq",
@@ -128,7 +128,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Epigenômica",
@@ -143,7 +143,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Diversas estratégias",
@@ -158,7 +158,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Diversos Tipos de Bibliotecas",
@@ -173,7 +173,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText(
@@ -189,7 +189,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Pacotes Completos de Serviços",
@@ -204,7 +204,7 @@ class ServiceMultiomicaBloc {
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Bioinformática Para Diversas Aplicações",
@@ -324,12 +324,12 @@ class ServiceMultiomicaBloc {
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Metagenômica tipo Shotgun",
@@ -343,7 +343,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Metatranscriptômica tipo Shotgun",
@@ -358,7 +358,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Metabarcoding",
@@ -373,7 +373,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Bactérias - 16S",
@@ -388,7 +388,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Epigenômica",
@@ -403,7 +403,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Archaea - 16S",
@@ -418,7 +418,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Eucariotos - 18S",
@@ -433,7 +433,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText(
@@ -449,7 +449,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Alvos Personalizados",
@@ -464,7 +464,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Pacotes Completos de Serviços:",
@@ -479,7 +479,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Extração de DNA",
@@ -494,7 +494,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Bioinformática",
@@ -606,12 +606,12 @@ class ServiceMultiomicaBloc {
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                         SizedBox(width: 5),
                         AutoSizeText("Perfil Proteômico",
@@ -625,7 +625,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("MALDI-TOF/TOF ou nano-LC-ESI-MS/MS",
@@ -640,7 +640,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Análises por espectrometria de massas\ne bioinformática.",
@@ -655,7 +655,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Quantificação",
@@ -670,7 +670,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("iTRAQ / Label-Free",
@@ -685,7 +685,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Proteínas em amostras complexas",
@@ -700,7 +700,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Caracterização",
@@ -715,7 +715,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText(
@@ -731,7 +731,7 @@ class ServiceMultiomicaBloc {
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.circle, color: Color.fromRGBO(55, 156, 210, 1), size: 10,),
                           SizedBox(width: 5),
                           AutoSizeText("Proteínas isoladas.",

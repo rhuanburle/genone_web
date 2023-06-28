@@ -1,5 +1,7 @@
 import 'package:genone_web_flutter/modules/home_user/home_user_binding.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_page.dart';
+import 'package:genone_web_flutter/modules/new_quotation/new_quotation_binding.dart';
+import 'package:genone_web_flutter/modules/new_quotation/new_quotation_page.dart';
 import 'package:genone_web_flutter/modules/register_user/register_user_binding.dart';
 import 'package:genone_web_flutter/modules/register_user/register_user_page.dart';
 import 'package:get/get.dart';
@@ -32,13 +34,17 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.registerUserPage,
-      page: () => const RegisterUserPage(),
+      page: () => RegisterUserPage(),
       binding: RegisterUserBinding(),
     ),
     GetPage(
         name: AppRoutes.homeUserPage,
         page: () => const HomeUserPage(),
         binding: HomeUserBinding(),
+    ),
+    GetPage(name: AppRoutes.newQuotationPage,
+        page: () => const NewQuotationPage(),
+        binding: NewQuotationBinding(),
     ),
   ];
 }

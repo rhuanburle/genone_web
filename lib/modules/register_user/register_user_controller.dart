@@ -5,6 +5,7 @@ import 'package:genone_web_flutter/modules/register_user/register_user_repositor
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:search_cep/search_cep.dart';
 import 'package:uuid/uuid.dart';
 
@@ -16,6 +17,7 @@ class RegisterUserController extends GetxController with AppUtil {
   RxBool isBankTransfer = false.obs;
   RxBool isCpf = true.obs;
   List<String> paymentMethod = [];
+  final storage = GetStorage();
 
   TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -39,11 +41,9 @@ class RegisterUserController extends GetxController with AppUtil {
       if(validateFields()) {
         await getPaymentMethods();
         await buildModelUserInfo();
-        isCreateSuccess = await repository.sendNewUserDetails(userSendInfo: userSendInfo.toJson());
       }
       if(isCreateSuccess) {
-        await getShowDialog(context);
-        Get.toNamed(AppRoutes.homeUserPage);
+        getShowDialog(context);
       }
 
     } catch (e) {
@@ -61,8 +61,8 @@ class RegisterUserController extends GetxController with AppUtil {
         city: cityController.text,
         state: stateController.text,
         company: companyController.text,
-        id: id,
-        email: '',
+        id: storage.read('userId'),
+        email: storage.read('userEmail'),
         streetAddress: addressController.text,
         zipCode: cepController.text,
         dateCreated: DateTime.now().toString(),
@@ -128,7 +128,8 @@ class RegisterUserController extends GetxController with AppUtil {
     }
   }
 
-  getShowDialog(BuildContext context) {
-    showDialog(context: context, builder: (context) => const DialogGeneral(title: "Cadastro Realizado", message: "Você sera direcionado para a pagina principal"));
+  getShowDialog(BuildContext context) async {
+    await showDialog(context: context, builder: (context) => const DialogGeneral(title: "Cadastro Realizado", message: "Você sera direcionado para a pagina principal"));
+    Get.toNamed(AppRoutes.homeUserPage);
   }
 }

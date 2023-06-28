@@ -12,7 +12,7 @@ class LoginController extends GetxController with AppUtil {
   TextEditingController passwordController = TextEditingController();
   final globalVariables = Get.put(GlobalVariables());
   final repository = Get.find<LoginRepository>();
-  bool isFistLogin = Get.arguments ?? false;
+  bool isFistLogin = false;
   final storage = GetStorage();
   RxBool isLoading = false.obs;
 
@@ -20,9 +20,8 @@ class LoginController extends GetxController with AppUtil {
     try{
       isLoading.value = true;
       final response = await repository.signIn(email: emailController.text, password: passwordController.text);
-      bool isFirstLogin = await repository.checkIsFirstLogin(userId: storage.read('userId')) ?? true;
 
-      checkLoginStatus(response, isFirstLogin, context);
+      checkLoginStatus(response, isFistLogin, context);
     } catch (e) {
       loggerError(message: e.toString());
     } finally {
@@ -30,13 +29,13 @@ class LoginController extends GetxController with AppUtil {
     }
   }
 
-  void checkLoginStatus(response, bool isFirstLogin, context) async {
+  void checkLoginStatus(response, bool isFistLogin, context) async {
     try{
-      if (response == "Signed in" && !isFirstLogin) {
-        globalVariables.isLogin.value = true;
+      if (response == "Signed in" && !isFistLogin) {
+        globalVariables.isLogin.value = false;
         loggerInfo(message: 'Login Success');
         Get.toNamed(AppRoutes.homeUserPage);
-      } else if (response == "Signed in" && isFirstLogin) {
+      } else if (response == "Signed in" && isFistLogin) {
         globalVariables.isLogin.value = true;
         loggerInfo(message: 'First Login');
         isLoading.value = false;

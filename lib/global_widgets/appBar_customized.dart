@@ -136,7 +136,7 @@ class AppBarCustomized {
                                     onPressed: () {
                                       authService.signOut();
                                       isAuth.value = false;
-                                      // Get.toNamed(AppRoutes.homePage);
+                                      Get.offAndToNamed(AppRoutes.homePage);
                                     },
                                     child: const Text(
                                       "Sair",

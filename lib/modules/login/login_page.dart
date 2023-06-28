@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:get/get.dart';
-
 import '../../global_widgets/appBar_customized.dart';
 import '../../utils/app_images.dart';
 import 'login_controller.dart';

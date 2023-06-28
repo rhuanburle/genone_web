@@ -4,11 +4,12 @@ import 'package:genone_web_flutter/modules/register_user/register_user_controlle
 import 'package:get/get.dart';
 
 class RegisterUserPage extends StatelessWidget {
-  const RegisterUserPage({Key? key}) : super(key: key);
+  RegisterUserPage({Key? key}) : super(key: key);
+  final ctrl = Get.find<RegisterUserController>();
+
 
   @override
   Widget build(BuildContext context) {
-    final ctrl = Get.find<RegisterUserController>();
     final widthMedia = MediaQuery
         .of(context)
         .size
@@ -85,14 +86,14 @@ class RegisterUserPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: 500,
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: widthMedia >= 580 ? 300 : 200,
-                                  child: Obx(() {
-                                    return TextField(
+                          Obx(() {
+                            return SizedBox(
+                              width: 500,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: widthMedia >= 580 ? 300 : 200,
+                                    child: TextField(
                                       controller: ctrl.cnpjCpfController,
                                       inputFormatters: ctrl.isCpf.value ? [
                                         ctrl.maskCpf
@@ -101,12 +102,10 @@ class RegisterUserPage extends StatelessWidget {
                                         border: OutlineInputBorder(),
                                         labelText: 'CNPJ/CPF *',
                                       ),
-                                    );
-                                  }),
-                                ),
-                                const SizedBox(width: 20),
-                                Obx(() {
-                                  return Row(
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Row(
                                     mainAxisAlignment: MainAxisAlignment
                                         .spaceEvenly,
                                     children: [
@@ -130,11 +129,11 @@ class RegisterUserPage extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold)),
                                     ],
-                                  );
-                                }),
-                              ],
-                            ),
-                          ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
                           SizedBox(
                             width: 500,
                             child: TextField(

@@ -4,6 +4,7 @@ import 'package:genone_web_flutter/modules/home/widgets/footer.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_controller.dart';
 import 'package:genone_web_flutter/modules/home_user/widgets/options_block_widget.dart';
 import 'package:genone_web_flutter/modules/home_user/widgets/personal_data_widget.dart';
+import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 import 'package:get/get.dart';
 
@@ -22,10 +23,10 @@ class HomeUserPage extends StatelessWidget {
             return Container(
               constraints: const BoxConstraints(maxWidth: 1366),
               child: ctrl.isInitLoading.value
-                  ? const Padding(
-                      padding: EdgeInsets.only(top: 200),
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 200),
                       child: Column(
-                        children: [
+                        children: const [
                           Text(
                             "Loading...",
                             style: TextStyle(fontSize: 20),
@@ -53,8 +54,8 @@ class HomeUserPage extends StatelessWidget {
                               ),
                             Column(
                               crossAxisAlignment: widthMedia > 1080 ? CrossAxisAlignment.start : CrossAxisAlignment.center,
-                              children: const [
-                                Padding(
+                              children: [
+                                const Padding(
                                   padding: EdgeInsets.only(top: 50, bottom: 10),
                                   child: Text(
                                     "Bem vindo Rhuan!",
@@ -64,7 +65,7 @@ class HomeUserPage extends StatelessWidget {
                                 Wrap(
                                   spacing: 20,
                                   runSpacing: 20,
-                                  children: [
+                                  children: const [
                                     PersonalDataWidget(
                                       name: "Dados Pessoais",
                                       icon: Icons.person_pin,
@@ -77,22 +78,22 @@ class HomeUserPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 40,
                                 ),
-                                Text("Gerenciamento de Pedidos",
+                                const Text("Gerenciamento de Pedidos",
                                     style: TextStyle(fontSize: 20)),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Wrap(
                                   spacing: 20,
                                   runSpacing: 20,
-                                  children: [
+                                  children: const [
                                     OptionsBlocWidget(
                                       name: "Pedidos Online",
                                       icon: Icons.shopping_cart_outlined,
-                                      route: "/pedidos_online",
+                                      route: AppRoutes.newQuotationPage,
                                     ),
                                     OptionsBlocWidget(
                                       name: "Minhas Cotações",
@@ -111,7 +112,7 @@ class HomeUserPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 100),
+                                const SizedBox(height: 100),
                               ],
                             ),
                           ],
