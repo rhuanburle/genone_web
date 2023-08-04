@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/data/repository/repository_api.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
-import 'package:genone_web_flutter/modules/login/login_repository.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
@@ -11,7 +11,7 @@ class LoginController extends GetxController with AppUtil {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final globalVariables = Get.put(GlobalVariables());
-  final repository = Get.find<LoginRepository>();
+  final repositoryApi = Get.find<RepositoryApi>();
   bool isFistLogin = false;
   final storage = GetStorage();
   RxBool isLoading = false.obs;
@@ -19,7 +19,7 @@ class LoginController extends GetxController with AppUtil {
   Future getLogin(context) async {
     try{
       isLoading.value = true;
-      final response = await repository.signIn(email: emailController.text, password: passwordController.text);
+      final response = await repositoryApi.signIn(email: emailController.text, password: passwordController.text);
 
       checkLoginStatus(response, isFistLogin, context);
     } catch (e) {

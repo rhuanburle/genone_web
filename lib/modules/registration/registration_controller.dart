@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/data/repository/repository_api.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
-import 'package:genone_web_flutter/modules/registration/registration_repository.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
@@ -19,7 +19,7 @@ class RegistrationController extends GetxController with AppUtil {
   TextEditingController stateController = TextEditingController();
 
   AuthService authService = Get.put(AuthService());
-  final repository = Get.find<RegistrationRepository>();
+  final repositoryApi = Get.find<RepositoryApi>();
 
   void register() {
     if (passwordController.text == confirmPasswordController.text) {
@@ -55,7 +55,7 @@ class RegistrationController extends GetxController with AppUtil {
 
   sendNewUser() async {
     try {
-      final response = await repository.signUp(
+      final response = await repositoryApi.signUp(
           email: emailController.text, password: passwordController.text);
 
       if (response == "Signed up") {

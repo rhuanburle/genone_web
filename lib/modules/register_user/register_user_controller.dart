@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/data/model/requests/user_request.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
-import 'package:genone_web_flutter/modules/register_user/register_user_repository.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
@@ -10,8 +9,6 @@ import 'package:search_cep/search_cep.dart';
 import 'package:uuid/uuid.dart';
 
 class RegisterUserController extends GetxController with AppUtil {
-  final repository = Get.find<RegisterUserRepository>();
-
   RxBool isPix = false.obs;
   RxBool isBankSlip = false.obs;
   RxBool isBankTransfer = false.obs;
