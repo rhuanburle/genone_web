@@ -3,6 +3,67 @@ import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
 
 class NewQuotationController extends GetxController with AppUtil {
+
+  RxString enzymeSelected = "".obs;
+  RxInt numberLines = 1.obs;
+  RxDouble heightSpreadsheet = 75.0.obs;
+
+  List<String> dnaPtnList = [
+    '',
+    'DNA',
+    'PTN'
+  ];
+
+  List<String> qtyType = [
+    '', '4ug - Padrão','100ug','200ug','500ug','1mg','10mg (High-copy)','10mg (Low-copy)'
+  ];
+
+  List<String> species = [
+    '','Não','E.coli','Arabidopsis thaliana','Bacillus subtilis','Bos taurus','Brassica napus','Caenorhabditis elegans','Caulobacter crescentus CB15','Chlamydomonas reinhardtii','Cricetulus griseus','Drosophila melanogaster','Escherichia coli K12','Glycine max','Homo sapiens','Hordeum vulgare','Mus musculus','Nicotiana benthamiana','Nicotiana tabacum','Oryctolagus cuniculus','Oryza sativa','Pichia pastoris','Rattus norvegicus','Saccharomyces cerevisiae','Schizosaccharomyces pombe','Spodoptera frugiperda','Synechococcus elongatus','Vaccinia virus','Xenopus laevis','Zea mays'
+  ];
+
+  List<String> prepareType = [
+    '',
+    'Pesquisa',
+    'Pré-Clínico',
+    'Transfecção',
+  ];
+
+  List<String> optimizar = ['Sim', 'Não'];
+
+  getList(text) {
+    if(text == 'Vetor') {
+      return vectorList;
+    } else if(text == 'DNA/PTN') {
+      return dnaPtnList;
+    } else if(text == 'Sítios de Restrição 5\'' || text == 'Sítios de Restrição 3\'' || text == 'Sítios de Restrição para evitar') {
+      return enzymesList;
+    } else if(text == 'Quantidade a ser Entregue') {
+      return qtyType;
+    } else if(text == 'Tipo de Preparação') {
+      return prepareType;
+    } else if(text == 'Espécie') {
+      return species;
+    } else if (text == 'Otimizar') {
+      return optimizar;
+    } else {
+      return [];
+    }
+  }
+
+  List<String> columnsSelectOption = [
+    '',
+    "Sítios de Restrição 5'",
+    "Sítios de Restrição 3'",
+    "Vetor",
+    "DNA/PTN",
+    "Quantidade a ser Entregue",
+    "Otimizar",
+    "Tipo de Preparação",
+    "Espécie",
+    "Sítios de Restrição para evitar"
+  ];
+
   List<String> worksheetTitlesList = [
     "Nome",
     "Sítios de Restrição 5'",
@@ -18,6 +79,7 @@ class NewQuotationController extends GetxController with AppUtil {
   ];
 
   List<String> enzymesList = [
+    '',
     'AatII',
     'Acc65I',
     'AflII',
@@ -88,6 +150,10 @@ class NewQuotationController extends GetxController with AppUtil {
     'StuI',
     'XbaI',
     'XhoI'
+  ];
+  
+  List<String> vectorList = [
+    '','Próprio','pUC57','pUC57-Kan','pUC57-BsaI-Free','pUC19','pUC18','pUC57-1.8K','pUC57-Simple','pBlueScript II SK(+)','pFastBac1 - Bcv','pFastBac-Dual - Bcv','pcDNA3.1(+)','pcDNA3.1(-)','pcDNA3.1(+) myc-His A','pcDNA3.1(+) myc-His B','pcDNA3.1(+) myc-His C','pcDNA3.1 myc-His(-) A','pcDNA3.1 myc-His(-) C','pcDNA3.1(+)-EGFP','pcDNA3.1/Hygro(+)','pcDNA3.1/Hygro(-)','pcDNA3.1/Zeo (+)','pcDNA3.1/Zeo (-)','psiCHECK2','pEGFP-N1','pEGFP-C1','pGL3-basic','pGL3-Promotor','pPIC 3.5k','pPIC9','pPIC9K','pPICZA','pPICZB','pPICZC','pPICZαA','pPICZαB','pPICZαC','pET-3a','pET-3d','pET-9a','pET-11a','pET-11b','pET-11d','pET-15b','pET-16b','pET-17b','pET-19b','pET-20b(+)','pET-21a(+)','pET-21b(+)','pET-21d(+)','pET-22b(+)','pET-23a(+)','pET-24a(+)','pET-24b(+)','pET-24c(+)','pET-24d(+)','pET-25b(+)','pET-26b(+)','pET-27b(+)','pET-28a(+)','pET-28b(+)','pET-29a(+)','pET-29b(+)','pET-30a(+)','pET-30b(+)','pET-31b(+)','pET-32a(+)','pET-32b(+)','pET-40b(+)','pET-41a(+)','pET-41b(+)','pET-42b(+)','pET-43.1a(+)','pET-45b(+)','pET-51b(+)','pET-52b(+)','pGEX-4T-1','pGEX-4T-2','pGEX-5X-1','pGEX-6P-1','pGEX-6P-3','pCDFDuet-1','pMAL-c4x','pMAL-c5E','pMAL-c5x','pMAL-p5E','pMAl-p5x','pQE-30','pQE-60','pGS-21a'
   ];
 
   List<bool> colorDifList = [

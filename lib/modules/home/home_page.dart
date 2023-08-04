@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/modules/home/home_repository.dart';
 import 'package:genone_web_flutter/modules/home/widgets/footer.dart';
 import 'package:genone_web_flutter/modules/home/widgets/others_bloc.dart';
 import 'package:genone_web_flutter/modules/home/widgets/production_biomolecules_bloc.dart';

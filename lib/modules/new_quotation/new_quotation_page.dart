@@ -18,25 +18,26 @@ class NewQuotationPage extends StatelessWidget {
           return SingleChildScrollView(
             child: Center(
               child: Container(
-                  padding: const EdgeInsets.all(20),
-                  constraints: const BoxConstraints(maxWidth: 1366),
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 30),
-                        child: Text(
-                          'Nova Cotação',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'RobotoMono',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
+                padding: const EdgeInsets.all(20),
+                constraints: const BoxConstraints(maxWidth: 1366),
+                child: Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 30),
+                      child: Text(
+                        'Nova Cotação',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'RobotoMono',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                      Container(
-                        height: 500,
+                    ),
+                    Obx(() {
+                      return Container(
+                        height: ctrl.heightSpreadsheet.value,
                         width: 1100,
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -62,10 +63,31 @@ class NewQuotationPage extends StatelessWidget {
                             );
                           },
                         ),
+                      );
+                    }),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SizedBox(
+                      height: 40,
+                      width: 160,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          ctrl.numberLines.value++;
+                          ctrl.heightSpreadsheet.value += 25.0;
+                        },
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.add),
+                            Text('Adicionar Linha'),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+              ),
             ),
           );
         },

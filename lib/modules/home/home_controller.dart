@@ -1,17 +1,12 @@
 import 'dart:async';
-import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
-import 'package:genone_web_flutter/modules/home/home_repository.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
-import 'package:dio/dio.dart';
 
 class HomeController extends GetxController with AppUtil {
   var timer;
   RxInt clientBannerCount = 1.obs;
-
-  final repository = Get.find<HomeRepository>();
 
   TextEditingController messageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
