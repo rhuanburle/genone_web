@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/data/model/requests/user_request.dart';
+import 'package:genone_web_flutter/data/model/user_request.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';

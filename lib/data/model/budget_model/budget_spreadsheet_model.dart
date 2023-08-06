@@ -1,4 +1,7 @@
+import 'package:get/get.dart';
+
 class BudgetSpreadsheetModel {
+  int idLine;
   String name;
   String restrictionFive;
   String restrictionAvoid;
@@ -8,10 +11,12 @@ class BudgetSpreadsheetModel {
   String dnaPtn;
   String quantityDelivered;
   String typePreparation;
-  String optimize;
+  bool isOptimize;
   String species;
+  RxBool sequenceValid;
 
   BudgetSpreadsheetModel({
+    required this.idLine,
     required this.name,
     required this.restrictionFive,
     required this.restrictionAvoid,
@@ -21,7 +26,8 @@ class BudgetSpreadsheetModel {
     required this.dnaPtn,
     required this.quantityDelivered,
     required this.typePreparation,
-    required this.optimize,
+    required this.isOptimize,
     required this.species,
+    required this.sequenceValid,
   });
 }

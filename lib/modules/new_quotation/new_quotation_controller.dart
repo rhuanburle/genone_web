@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/data/model/budget_model/budget_spreadsheet_model.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class NewQuotationController extends GetxController with AppUtil {
 
   RxString enzymeSelected = "".obs;
   RxInt numberLines = 1.obs;
   RxDouble heightSpreadsheet = 75.0.obs;
+
+  @override
+  void onInit() {
+    getNumberLines();
+    super.onInit();
+  }
 
   List<String> dnaPtnList = [
     '',
@@ -170,8 +178,117 @@ class NewQuotationController extends GetxController with AppUtil {
     false
   ];
 
-  @override
-  void onInit() {
-    super.onInit();
+  List<BudgetSpreadsheetModel> linesBudgetsList = [
+    BudgetSpreadsheetModel(
+      idLine: 1,
+      name: '',
+      restrictionFive: '',
+      restrictionAvoid: '',
+      restrictionThree: '',
+      sequence: '',
+      vector: '',
+      dnaPtn: '',
+      quantityDelivered: '',
+      typePreparation: '',
+      isOptimize: false,
+      species: '',
+      sequenceValid: true.obs,
+    ),
+  ];
+
+  void getNumberLines() {
+    numberLines.value = linesBudgetsList.length;
+  }
+
+  updateBudgetSpreadsheetModel({required String text, required BudgetSpreadsheetModel line, required String value}) {
+    switch (text) {
+      case 'Nome':
+        line.name = value;
+        break;
+      case 'Sequência':
+        line.sequence = value;
+        break;
+      case 'Sítios de Restrição 5\'':
+        line.restrictionFive = value;
+        break;
+      case 'Sítios de Restrição 3\'':
+        line.restrictionThree = value;
+        break;
+      case 'Vetor':
+        line.vector = value;
+        break;
+      case 'DNA/PTN':
+        line.dnaPtn = value;
+        break;
+      case 'Quantidade a ser Entregue':
+        line.quantityDelivered = value;
+        break;
+      case 'Tipo de Preparação':
+        line.typePreparation = value;
+        break;
+      case 'Otimizar':
+        line.isOptimize = value == 'Sim' ? true : false;
+        break;
+      case 'Espécie':
+        line.species = value;
+        break;
+      case 'Sítios de Restrição para evitar':
+        line.restrictionAvoid = value;
+        break;
+    }
+  }
+
+  RxBool validateConcluded = true.obs;
+  validateSequential() {
+    validateConcluded.value = false;
+    for(int i = 0; i < linesBudgetsList.length; i++) {
+      if(linesBudgetsList[i].dnaPtn == 'DNA') {
+        linesBudgetsList[i].sequenceValid.value = RegExp('^[ATCG]+\$').hasMatch(linesBudgetsList[i].sequence);
+      } else if(linesBudgetsList[i].dnaPtn == 'PTN') {
+        linesBudgetsList[i].sequenceValid.value = RegExp('^[ABCDEFGHIKLMNPQRSTVWYZ]+\$').hasMatch(linesBudgetsList[i].sequence);
+      }
+    }
+
+    if(linesBudgetsList.any((element) => element.sequenceValid.value == false || element.sequence.isEmpty || element.dnaPtn == '')) {
+      showDialogGeneral(title: 'Erro', text: 'Sequência inválida', textButton: 'Ok');
+      } else if(linesBudgetsList.any((element) => element.dnaPtn == 'DNA' && !element.isOptimize)) {
+        showDialogGeneral(title: 'Atenção', text: 'DNA precisa ser Otimizado', textButton: 'Ok');
+    } else {
+      showDialogGeneral(title: 'Sucesso', text: 'Sequências válidas', textButton: 'Ok');
+    }
+
+    validateConcluded.value = true;
+  }
+
+  showDialogGeneral({required String title, required String text, required String textButton}) {
+    Get.defaultDialog(
+      title: title,
+      content: Text(text),
+      textConfirm: textButton,
+      confirmTextColor: Colors.white,
+      onConfirm: () {
+        Get.back();
+      },
+    );
+  }
+
+  void addLine(){
+    linesBudgetsList.add(BudgetSpreadsheetModel(
+      idLine: linesBudgetsList.length + 1,
+      name: '',
+      restrictionFive: '',
+      restrictionAvoid: '',
+      restrictionThree: '',
+      sequence: '',
+      vector: '',
+      dnaPtn: '',
+      quantityDelivered: '',
+      typePreparation: '',
+      isOptimize: false,
+      species: '',
+      sequenceValid: true.obs,
+    ));
+    numberLines.value = linesBudgetsList.length;
+    heightSpreadsheet.value += 25.0;
   }
 }

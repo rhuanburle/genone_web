@@ -69,4 +69,8 @@ mixin AppUtil {
     return regex.hasMatch(email);
   }
 
+  removeCaracteresEspeciais(String text) {
+    return text.replaceAll(RegExp(r'[^\w\s]+'), '');
+  }
+
 }

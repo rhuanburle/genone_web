@@ -24,25 +24,9 @@ class CellSpreadsheet extends StatelessWidget {
             border: Border.all(color: Colors.grey[300]!),
           ),
           child:
-          Text(text, style: const TextStyle(fontSize: 12),
+          Text(text == 'Sequência' ? text + ' **' : text, style: const TextStyle(fontSize: 12),
               textAlign: TextAlign.center),
         ),
-        for(int i = 0; i < ctrl.numberLines.value; i++)
-          Container(
-            alignment: Alignment.center,
-            height: 25,
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[300]!),
-            ),
-            child: !ctrl.columnsSelectOption.contains(text) ? const TextField(
-              decoration: InputDecoration(
-                isDense: true,
-                border: InputBorder.none,
-                hintStyle: TextStyle(fontSize: 10),
-              ),
-            ) : DropdownWidget(text: text),
-          ),
       ],
     );
   }
