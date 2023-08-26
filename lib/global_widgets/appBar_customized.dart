@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/utils/global_variables.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../data/providers/services/auth_service.dart';
+import '../data/providers/services/service_client.dart';
 import '../routes/app_routes.dart';
 import '../utils/app_images.dart';
 
 GlobalVariables globalVariables = Get.put(GlobalVariables());
-AuthService authService = Get.put(AuthService());
 final storage = GetStorage();
 RxBool isAuth = false.obs;
 String email = "";
 
 class AppBarCustomized {
   static AppBar appBar(BuildContext context) {
+
     if(storage.read('auth') != null) {
       isAuth.value = true;
       email = storage.read('userEmail')!;
@@ -102,7 +102,6 @@ class AppBarCustomized {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      authService.signOut();
                                       isAuth.value = false;
                                       // Get.toNamed(AppRoutes.homePage);
                                     },
@@ -118,7 +117,6 @@ class AppBarCustomized {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      authService.signOut();
                                       isAuth.value = false;
                                       // Get.toNamed(AppRoutes.homePage);
                                     },
@@ -134,7 +132,6 @@ class AppBarCustomized {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      authService.signOut();
                                       isAuth.value = false;
                                       Get.offAndToNamed(AppRoutes.homePage);
                                     },

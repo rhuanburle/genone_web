@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/data/hive/register_adapter.dart';
+import 'package:genone_web_flutter/data/repository/repository_api.dart';
+import 'package:genone_web_flutter/modules/home/home_page.dart';
 import 'package:genone_web_flutter/modules/new_quotation/new_quotation_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,8 +33,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NewQuotationPage(),
+      initialBinding: GlobalBindings(),
+      home: HomePage(),
       getPages: AppPages.pages,
     );
   }
 }
+
+class GlobalBindings extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(RepositoryApi()); // Registrar a instância globalmente
+  }
+}
+

@@ -5,7 +5,7 @@ import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
-import '../../data/providers/services/auth_service.dart';
+import '../../data/providers/services/service_client.dart';
 
 class RegistrationController extends GetxController with AppUtil {
   TextEditingController nameController = TextEditingController();
@@ -18,7 +18,7 @@ class RegistrationController extends GetxController with AppUtil {
   TextEditingController cityController = TextEditingController();
   TextEditingController stateController = TextEditingController();
 
-  AuthService authService = Get.put(AuthService());
+  ServiceClient authService = Get.put(ServiceClient());
   final repositoryApi = Get.find<RepositoryApi>();
 
   void register() {
@@ -27,7 +27,7 @@ class RegistrationController extends GetxController with AppUtil {
           passwordController.text.isNotEmpty &&
           isEmailValid(emailController.text) &&
           verificaSenha(passwordController.text)) {
-        sendNewUser();
+        Get.toNamed(AppRoutes.registerUserPage, arguments: {"email": emailController.text, "password": passwordController.text});
       } else if (!isEmailValid(emailController.text) &&
           emailController.text.isNotEmpty) {
         showDialogGeneral(
@@ -50,24 +50,6 @@ class RegistrationController extends GetxController with AppUtil {
           title: 'Atenção',
           message: 'As senhas não coincidem',
           context: Get.context!);
-    }
-  }
-
-  sendNewUser() async {
-    try {
-      final response = await repositoryApi.signUp(
-          email: emailController.text, password: passwordController.text);
-
-      if (response == "Signed up") {
-        Get.offAllNamed(AppRoutes.loginPage, arguments: true);
-      } else {
-        showDialogGeneral(
-            title: 'Atenção',
-            message: 'Algo errado no cadastro, tente de novo mais tarde',
-            context: Get.context!);
-      }
-    } catch (e) {
-      loggerError(message: e.toString());
     }
   }
 

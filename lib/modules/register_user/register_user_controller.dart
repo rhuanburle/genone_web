@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:genone_web_flutter/data/model/user_request.dart';
+import 'package:genone_web_flutter/data/model/user_register.dart';
+import 'package:genone_web_flutter/data/repository/repository_api.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
 import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:search_cep/search_cep.dart';
-import 'package:uuid/uuid.dart';
 
 class RegisterUserController extends GetxController with AppUtil {
   RxBool isPix = false.obs;
@@ -14,7 +13,10 @@ class RegisterUserController extends GetxController with AppUtil {
   RxBool isBankTransfer = false.obs;
   RxBool isCpf = true.obs;
   List<String> paymentMethod = [];
-  final storage = GetStorage();
+  final data = Get.arguments;
+  String email = '';
+  String password = '';
+  final repository = Get.find<RepositoryApi>();
 
   TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -30,42 +32,56 @@ class RegisterUserController extends GetxController with AppUtil {
   TextEditingController countryController = TextEditingController();
   TextEditingController commentsController = TextEditingController();
 
-  late UserRequest userSendInfo;
+  late UserRegister userSendInfo;
+
+  @override
+  void onInit() {
+    email = data['email'];
+    password = data['password'];
+    super.onInit();
+  }
 
   sendForm(context) async {
     bool isCreateSuccess = false;
     try {
       if(validateFields()) {
         await getPaymentMethods();
-        await buildModelUserInfo();
+        isCreateSuccess = await buildModelUserInfo() ?? false;
       }
+
+      repository.signUp(userSendInfo);
+
       if(isCreateSuccess) {
         getShowDialog(context);
       }
-
     } catch (e) {
       loggerError(message: e);
     }
   }
 
-  var uuid = const Uuid();
   buildModelUserInfo() {
     try {
-      var id = uuid.v4();
-      userSendInfo = UserRequest(
+      userSendInfo = UserRegister(
         name: nameController.text,
+        email: email,
+        password: password,
         phone: phoneController.text,
         city: cityController.text,
         state: stateController.text,
         company: companyController.text,
-        id: storage.read('userId'),
-        email: storage.read('userEmail'),
-        streetAddress: addressController.text,
-        zipCode: cepController.text,
+        adress: addressController.text,
+        zip: cepController.text,
         dateCreated: DateTime.now().toString(),
-        dateUpdated: DateTime.now().toString(),
-        paymentMethods: paymentMethod,
+        dateUpdate: DateTime.now().toString(),
+        paymentMethods: paymentMethod.first,
+        cpf: isCpf.value ? cnpjCpfController.text : '',
+        cnpj: !isCpf.value ? cnpjCpfController.text : '',
+        birthDate: '1900-01-01',
+        district: districtController.text,
+        complement: complementController.text,
+        comments: commentsController.text,
       );
+      return true;
     } catch (e) {
       loggerError(message: e);
     }
