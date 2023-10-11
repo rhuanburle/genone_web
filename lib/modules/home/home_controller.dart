@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/data/model/email_contact.dart';
+import 'package:genone_web_flutter/data/repository/repository_api.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController with AppUtil {
+
   var timer;
   RxInt clientBannerCount = 1.obs;
 
@@ -13,6 +16,7 @@ class HomeController extends GetxController with AppUtil {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
+  final repositoryApi = Get.find<RepositoryApi>();
 
   @override
   void initializer() {
@@ -42,7 +46,8 @@ class HomeController extends GetxController with AppUtil {
             subject: subjectController.text,
             message: messageController.text);
 
-        bool isSendOk = true;
+
+        bool isSendOk = await repositoryApi.sendContactEmail(emailContact: emailContact);
 
         showInfoDialog(isSendOk: isSendOk, context: context);
       } else {
@@ -85,25 +90,4 @@ class HomeController extends GetxController with AppUtil {
   }
 }
 
-class EmailContact {
-  String name;
-  String email;
-  String phone;
-  String subject;
-  String message;
 
-  EmailContact(
-      {required this.name,
-      required this.email,
-      required this.phone,
-      required this.subject,
-      required this.message});
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'email': email,
-        'phone': phone,
-        'subject': subject,
-        'message': message,
-      };
-}

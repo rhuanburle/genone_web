@@ -29,5 +29,4 @@ class ServiceClient with ChangeNotifier, AppUtil{
       loggerError(message: e.toString());
     }
   }
-
 }
