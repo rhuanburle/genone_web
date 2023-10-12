@@ -13,8 +13,6 @@ import 'home_controller.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final ScrollController _scrollController = ScrollController();
-  // final ctrl = Get.put(HomeController());
-
 
   @override
   Widget build(BuildContext context) {
