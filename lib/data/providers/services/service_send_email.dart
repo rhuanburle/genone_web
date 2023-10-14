@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/data/model/email_contact.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 
-
 class ServiceSendEmail with ChangeNotifier, AppUtil {
 
   final dio = Dio();
-  String url = "localhost:8080/email/sendContactEmail";
+  String url = "HTTP://localhost:8080/email/sendContactEmail";
 
   sendContactEmail({required EmailContact emailContact}) async {
     try {

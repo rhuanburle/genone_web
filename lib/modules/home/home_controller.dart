@@ -5,6 +5,7 @@ import 'package:genone_web_flutter/data/repository/repository_api.dart';
 import 'package:genone_web_flutter/global_widgets/dialog_general.dart';
 import 'package:genone_web_flutter/utils/util.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomeController extends GetxController with AppUtil {
 
@@ -39,12 +40,14 @@ class HomeController extends GetxController with AppUtil {
   sendEmail(context) async {
     try {
       if (isEmailValid(emailController.text)) {
+        String dateNow = DateFormat('yyyy-MM-dd').format(DateTime.now());
         EmailContact emailContact = EmailContact(
             name: nameController.text,
             email: emailController.text,
             phone: phoneController.text,
             subject: subjectController.text,
-            message: messageController.text);
+            message: messageController.text,
+            dateCreate: dateNow);
 
 
         bool isSendOk = await repositoryApi.sendContactEmail(emailContact: emailContact);

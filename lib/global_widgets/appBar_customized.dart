@@ -49,100 +49,100 @@ class AppBarCustomized {
                   height: 50,
                 ),
               ),
-              MediaQuery.of(context).size.width < 600
-                  ? IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.menu,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    )
-                  : Obx(() {
-                      return isAuth.value == false
-                          ? Row(
-                              children: [
-                                TextButton(
-                                    onPressed: () {
-                                      Get.toNamed(AppRoutes.loginPage,
-                                          arguments: false);
-                                    },
-                                    child: const Text(
-                                      "Login",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                                const Text(
-                                  "|",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      Get.toNamed(AppRoutes.registrationPage);
-                                    },
-                                    child: const Text(
-                                      "Cadastrar-se",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                              ],
-                            )
-                          : Row(
-                              children: [
-                                Text(
-                                  "Olá, $email ",
-                                  style: const TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                const Text(
-                                  "| ",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      isAuth.value = false;
-                                      // Get.toNamed(AppRoutes.homePage);
-                                    },
-                                    child: const Text(
-                                      "Orçamentos ",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                                const Text(
-                                  "| ",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      isAuth.value = false;
-                                      // Get.toNamed(AppRoutes.homePage);
-                                    },
-                                    child: const Text(
-                                      "Cadastro ",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                                const Text(
-                                  "| ",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      isAuth.value = false;
-                                      Get.offAndToNamed(AppRoutes.homePage);
-                                    },
-                                    child: const Text(
-                                      "Sair",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    )),
-                              ],
-                            );
-                    }),
+              // MediaQuery.of(context).size.width < 600
+              //     ? IconButton(
+              //         onPressed: () {},
+              //         icon: const Icon(
+              //           Icons.menu,
+              //           color: Colors.white,
+              //           size: 40,
+              //         ),
+              //       )
+              //     : Obx(() {
+              //         return isAuth.value == false
+              //             ? Row(
+              //                 children: [
+              //                   TextButton(
+              //                       onPressed: () {
+              //                         Get.toNamed(AppRoutes.loginPage,
+              //                             arguments: false);
+              //                       },
+              //                       child: const Text(
+              //                         "Login",
+              //                         style: TextStyle(
+              //                             color: Colors.white, fontSize: 20),
+              //                       )),
+              //                   const Text(
+              //                     "|",
+              //                     style: TextStyle(
+              //                         color: Colors.white, fontSize: 20),
+              //                   ),
+              //                   TextButton(
+              //                       onPressed: () {
+              //                         Get.toNamed(AppRoutes.registrationPage);
+              //                       },
+              //                       child: const Text(
+              //                         "Cadastrar-se",
+              //                         style: TextStyle(
+              //                             color: Colors.white, fontSize: 20),
+              //                       )),
+              //                 ],
+              //               )
+              //             : Row(
+              //                 children: [
+              //                   Text(
+              //                     "Olá, $email ",
+              //                     style: const TextStyle(
+              //                         color: Colors.white, fontSize: 20),
+              //                   ),
+              //                   const Text(
+              //                     "| ",
+              //                     style: TextStyle(
+              //                         color: Colors.white, fontSize: 20),
+              //                   ),
+              //                   TextButton(
+              //                       onPressed: () {
+              //                         isAuth.value = false;
+              //                         // Get.toNamed(AppRoutes.homePage);
+              //                       },
+              //                       child: const Text(
+              //                         "Orçamentos ",
+              //                         style: TextStyle(
+              //                             color: Colors.white, fontSize: 20),
+              //                       )),
+              //                   const Text(
+              //                     "| ",
+              //                     style: TextStyle(
+              //                         color: Colors.white, fontSize: 20),
+              //                   ),
+              //                   TextButton(
+              //                       onPressed: () {
+              //                         isAuth.value = false;
+              //                         // Get.toNamed(AppRoutes.homePage);
+              //                       },
+              //                       child: const Text(
+              //                         "Cadastro ",
+              //                         style: TextStyle(
+              //                             color: Colors.white, fontSize: 20),
+              //                       )),
+              //                   const Text(
+              //                     "| ",
+              //                     style: TextStyle(
+              //                         color: Colors.white, fontSize: 20),
+              //                   ),
+              //                   TextButton(
+              //                       onPressed: () {
+              //                         isAuth.value = false;
+              //                         Get.offAndToNamed(AppRoutes.homePage);
+              //                       },
+              //                       child: const Text(
+              //                         "Sair",
+              //                         style: TextStyle(
+              //                             color: Colors.white, fontSize: 20),
+              //                       )),
+              //                 ],
+              //               );
+              //       }),
             ],
           ),
         ),

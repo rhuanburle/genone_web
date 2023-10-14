@@ -3,19 +3,19 @@ import 'package:genone_web_flutter/modules/home/home_controller.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 import 'package:get/get.dart';
 
-class Footer extends StatelessWidget {
-  const Footer({Key? key}) : super(key: key);
+class FooterHome extends StatelessWidget {
+  const FooterHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final widthMedia = MediaQuery.of(context).size.width;
     return GetBuilder<HomeController>(builder: (ctrl) {
       return Container(
-          constraints: const BoxConstraints(maxWidth: 1366),
+          // constraints: const BoxConstraints(maxWidth: 1366),
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           ),
           child: Column(children: [
             Row(children: [
@@ -27,7 +27,7 @@ class Footer extends StatelessWidget {
                       height: 500,
                       decoration: BoxDecoration(
                         borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(20),
+                          topLeft: Radius.circular(10),
                         ),
                         image: DecorationImage(
                           image: const AssetImage(AppImages.genone2Home),

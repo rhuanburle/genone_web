@@ -2,6 +2,10 @@ import 'package:genone_web_flutter/modules/home_user/home_user_binding.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_page.dart';
 import 'package:genone_web_flutter/modules/new_quotation/new_quotation_binding.dart';
 import 'package:genone_web_flutter/modules/new_quotation/new_quotation_page.dart';
+import 'package:genone_web_flutter/modules/privacy_policy/privacy_policy_binding.dart';
+import 'package:genone_web_flutter/modules/privacy_policy/privacy_policy_page.dart';
+import 'package:genone_web_flutter/modules/publications/publications_binding.dart';
+import 'package:genone_web_flutter/modules/publications/publications_page.dart';
 import 'package:genone_web_flutter/modules/register_user/register_user_binding.dart';
 import 'package:genone_web_flutter/modules/register_user/register_user_page.dart';
 import 'package:get/get.dart';
@@ -45,6 +49,14 @@ class AppPages {
     GetPage(name: AppRoutes.newQuotationPage,
         page: () => const NewQuotationPage(),
         binding: NewQuotationBinding(),
+    ),
+    GetPage(name: AppRoutes.publicationsPage,
+        page: () => const PublicationsPage(),
+        binding: PublicationsBinding(),
+    ),
+    GetPage(name: AppRoutes.privacyPolicyPage,
+        page: () => const PrivacyPolicyPage(),
+        binding: PrivacyPolicyBinding(),
     ),
   ];
 }

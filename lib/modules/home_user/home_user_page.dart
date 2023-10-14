@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/global_widgets/appBar_customized.dart';
-import 'package:genone_web_flutter/modules/home/widgets/footer.dart';
+import 'package:genone_web_flutter/modules/home/widgets/footer_home.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_controller.dart';
 import 'package:genone_web_flutter/modules/home_user/widgets/options_block_widget.dart';
 import 'package:genone_web_flutter/modules/home_user/widgets/personal_data_widget.dart';
@@ -117,7 +117,6 @@ class HomeUserPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const Footer(),
                       ],
                     ),
             );

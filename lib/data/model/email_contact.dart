@@ -6,7 +6,7 @@ class EmailContact {
   String phone;
   String subject;
   String message;
-  DateTime dateCreate = DateFormat('yyyy-MM-dd').parse(DateTime.now().toString());
+  String dateCreate;
 
 
   EmailContact(
@@ -14,7 +14,8 @@ class EmailContact {
         required this.email,
         required this.phone,
         required this.subject,
-        required this.message});
+        required this.message,
+        required this.dateCreate});
 
   Map<String, dynamic> toJson() => {
     'name': name,
@@ -22,6 +23,6 @@ class EmailContact {
     'phone': phone,
     'subject': subject,
     'message': message,
-    'dateCreate': dateCreate.toString(),
+    'dateCreate': dateCreate,
   };
 }
