@@ -18,7 +18,7 @@ class PublicationsPage extends StatelessWidget {
           children: [
             Center(
               child: Container(
-                constraints: const BoxConstraints(maxWidth: 1366),
+                constraints: const BoxConstraints(maxWidth: 1200),
                 padding: const EdgeInsets.all(40),
                 child: Column(
                   children: [

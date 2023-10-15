@@ -50,27 +50,27 @@ class UncomplicatedBiotechnology {
                         fontWeight: FontWeight.bold,
                         color: Colors.white)),
               ),
-              Container(
-                  width: 200,
-                  height: 50,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(
-                              color: Colors.white, width: 2),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        shadowColor: Colors.black,
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        "Saiba Mais",
-                        style: TextStyle(
-                            color:
-                            Color.fromRGBO(73, 174, 228, 1),
-                            fontSize: 16),
-                      )))
+              // Container(
+              //     width: 200,
+              //     height: 50,
+              //     child: ElevatedButton(
+              //         style: ElevatedButton.styleFrom(
+              //           backgroundColor: Colors.white,
+              //           shape: RoundedRectangleBorder(
+              //             side: const BorderSide(
+              //                 color: Colors.white, width: 2),
+              //             borderRadius: BorderRadius.circular(30),
+              //           ),
+              //           shadowColor: Colors.black,
+              //         ),
+              //         onPressed: () {},
+              //         child: const Text(
+              //           "Saiba Mais",
+              //           style: TextStyle(
+              //               color:
+              //               Color.fromRGBO(73, 174, 228, 1),
+              //               fontSize: 16),
+              //         )))
             ],
           ),
         ),
@@ -119,6 +119,7 @@ class UncomplicatedBiotechnology {
               border: Border(top: BorderSide.none),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(AppImages.iconBiotech,
                     height: 50, color: Colors.white),
@@ -145,28 +146,28 @@ class UncomplicatedBiotechnology {
                           fontWeight: FontWeight.bold,
                           color: Colors.white)),
                 ),
-                Container(
-                  width: 200,
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                            color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      shadowColor: Colors.black,
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "Saiba Mais",
-                      style: TextStyle(
-                          color: Color.fromRGBO(73, 174, 228, 1),
-                          fontSize: 16),
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: 200,
+                //   height: 50,
+                //   child: ElevatedButton(
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: Colors.white,
+                //       shape: RoundedRectangleBorder(
+                //         side: const BorderSide(
+                //             color: Colors.white, width: 2),
+                //         borderRadius: BorderRadius.circular(30),
+                //       ),
+                //       shadowColor: Colors.black,
+                //     ),
+                //     onPressed: () {},
+                //     child: const Text(
+                //       "Saiba Mais",
+                //       style: TextStyle(
+                //           color: Color.fromRGBO(73, 174, 228, 1),
+                //           fontSize: 16),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

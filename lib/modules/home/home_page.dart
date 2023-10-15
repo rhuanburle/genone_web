@@ -114,7 +114,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        constraints: const BoxConstraints(maxWidth: 1366),
+                        constraints: const BoxConstraints(maxWidth: 1200),
                         child: Column(
                           children: [
                             Container(
