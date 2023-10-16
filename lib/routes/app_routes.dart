@@ -7,4 +7,6 @@ class AppRoutes {
   static const String newQuotationPage = "/new_quotation_page.dart";
   static const String publicationsPage = "/publications_page.dart";
   static const String privacyPolicyPage = "/privacy_policy_page.dart";
+  static const String genesInfoPage = "/genes_info_page.dart";
+  static const String oligonucleotideosInfoPage = "/oligonucleotideos_info_page.dart";
 }

@@ -1,7 +1,11 @@
+import 'package:genone_web_flutter/modules/genes_info/genes_info_binding.dart';
+import 'package:genone_web_flutter/modules/genes_info/genes_info_page.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_binding.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_page.dart';
 import 'package:genone_web_flutter/modules/new_quotation/new_quotation_binding.dart';
 import 'package:genone_web_flutter/modules/new_quotation/new_quotation_page.dart';
+import 'package:genone_web_flutter/modules/oligonucleotideos_info/oligonucleotideos_Info_binding.dart';
+import 'package:genone_web_flutter/modules/oligonucleotideos_info/oligonucleotideos_info_page.dart';
 import 'package:genone_web_flutter/modules/privacy_policy/privacy_policy_binding.dart';
 import 'package:genone_web_flutter/modules/privacy_policy/privacy_policy_page.dart';
 import 'package:genone_web_flutter/modules/publications/publications_binding.dart';
@@ -57,6 +61,14 @@ class AppPages {
     GetPage(name: AppRoutes.privacyPolicyPage,
         page: () => const PrivacyPolicyPage(),
         binding: PrivacyPolicyBinding(),
+    ),
+    GetPage(name: AppRoutes.genesInfoPage,
+        page: () => const GenesInfoPage(),
+        binding: GenesInfoBinding(),
+    ),
+    GetPage(name: AppRoutes.oligonucleotideosInfoPage,
+        page: () => const OligonucleotideosInfoPage(),
+        binding: OligonucleotideosInfoBinding(),
     ),
   ];
 }

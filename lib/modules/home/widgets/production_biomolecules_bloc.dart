@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:genone_web_flutter/routes/app_routes.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/app_images.dart';
 
@@ -54,12 +56,12 @@ class ProductionBiomoleculesBloc {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Icon(Icons.circle, color: Colors.white, size: 10),
                       SizedBox(width: 5),
                       AutoSizeText("Sintetize Genes ou Regiões Reguladoras",
@@ -71,9 +73,9 @@ class ProductionBiomoleculesBloc {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText("Serviço completo de síntese de genes",
@@ -86,9 +88,9 @@ class ProductionBiomoleculesBloc {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText(
@@ -102,9 +104,9 @@ class ProductionBiomoleculesBloc {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText("Otimização de códons gratuita",
@@ -117,9 +119,9 @@ class ProductionBiomoleculesBloc {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText(
@@ -133,9 +135,9 @@ class ProductionBiomoleculesBloc {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText("Maxi e Midi Preps livres de endotoxinas",
@@ -168,7 +170,9 @@ class ProductionBiomoleculesBloc {
                   ),
                   shadowColor: Colors.black,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppRoutes.genesInfoPage);
+                },
                 child: const Text(
                   "Ver Mais",
                   style: TextStyle(
@@ -227,11 +231,11 @@ class ProductionBiomoleculesBloc {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Icon(Icons.circle, color: Colors.white, size: 10),
                       SizedBox(width: 5),
                       AutoSizeText("Oligos Simples",
@@ -243,9 +247,9 @@ class ProductionBiomoleculesBloc {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText("Inúmeras modificações e marcações",
@@ -258,9 +262,9 @@ class ProductionBiomoleculesBloc {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText("Sondas Fluorescentes",
@@ -273,9 +277,9 @@ class ProductionBiomoleculesBloc {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top: 5.0),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(Icons.circle, color: Colors.white, size: 10),
                         SizedBox(width: 5),
                         AutoSizeText(
@@ -310,7 +314,9 @@ class ProductionBiomoleculesBloc {
                   ),
                   shadowColor: Colors.black,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppRoutes.oligonucleotideosInfoPage);
+                },
                 child: const Text(
                   "Ver Mais",
                   style: TextStyle(
@@ -374,12 +380,12 @@ class ProductionBiomoleculesBloc {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: const [
+                  children: [
                     Icon(Icons.circle, color: Colors.white, size: 10),
                     SizedBox(width: 5),
                     AutoSizeText("Diversas modificações",
@@ -391,9 +397,9 @@ class ProductionBiomoleculesBloc {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.only(top: 5.0),
                   child: Row(
-                    children: const [
+                    children: [
                       Icon(Icons.circle, color: Colors.white, size: 10),
                       SizedBox(width: 5),
                       AutoSizeText("Escalas de síntese de 1mg até gramas",
@@ -406,9 +412,9 @@ class ProductionBiomoleculesBloc {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.only(top: 5.0),
                   child: Row(
-                    children: const [
+                    children: [
                       Icon(Icons.circle, color: Colors.white, size: 10),
                       SizedBox(width: 5),
                       AutoSizeText("Diversos graus de pureza",
@@ -421,9 +427,9 @@ class ProductionBiomoleculesBloc {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.only(top: 5.0),
                   child: Row(
-                    children: const [
+                    children: [
                       Icon(Icons.circle, color: Colors.white, size: 10),
                       SizedBox(width: 5),
                       AutoSizeText("Estrito controle de qualidade",

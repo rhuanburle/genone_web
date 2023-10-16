@@ -37,8 +37,10 @@ class HomeController extends GetxController with AppUtil {
     });
   }
 
+  RxBool isSendEmailLoading = false.obs;
   sendEmail(context) async {
     try {
+      isSendEmailLoading.value = true;
       if (isEmailValid(emailController.text)) {
         String dateNow = DateFormat('yyyy-MM-dd').format(DateTime.now());
         EmailContact emailContact = EmailContact(
@@ -54,6 +56,7 @@ class HomeController extends GetxController with AppUtil {
 
         showInfoDialog(isSendOk: isSendOk, context: context);
       } else {
+        isSendEmailLoading.value = false;
         showDialog(
           context: context,
           builder: (context) => const DialogGeneral(
@@ -69,6 +72,7 @@ class HomeController extends GetxController with AppUtil {
 
   showInfoDialog({required bool isSendOk, required context}) {
     if (isSendOk) {
+      isSendEmailLoading.value = false;
       showDialog(
         context: context,
         builder: (context) => const DialogGeneral(
@@ -82,6 +86,7 @@ class HomeController extends GetxController with AppUtil {
       subjectController.text = '';
       messageController.text = '';
     } else {
+      isSendEmailLoading.value = false;
       showDialog(
         context: context,
         builder: (context) => const DialogGeneral(

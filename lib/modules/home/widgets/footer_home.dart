@@ -8,10 +8,13 @@ class FooterHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widthMedia = MediaQuery.of(context).size.width;
+    final widthMedia = MediaQuery
+        .of(context)
+        .size
+        .width;
     return GetBuilder<HomeController>(builder: (ctrl) {
       return Container(
-          // constraints: const BoxConstraints(maxWidth: 1366),
+        // constraints: const BoxConstraints(maxWidth: 1366),
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: const BorderRadius.only(
@@ -21,22 +24,22 @@ class FooterHome extends StatelessWidget {
             Row(children: [
               widthMedia > 1000
                   ? AnimatedContainer(
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeIn,
-                      width: 500,
-                      height: 500,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                        ),
-                        image: DecorationImage(
-                          image: const AssetImage(AppImages.genone2Home),
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.5), BlendMode.darken),
-                        ),
-                      ),
-                    )
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeIn,
+                width: 500,
+                height: 500,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                  ),
+                  image: DecorationImage(
+                    image: const AssetImage(AppImages.genone2Home),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.5), BlendMode.darken),
+                  ),
+                ),
+              )
                   : Container(),
               Expanded(
                 flex: 2,
@@ -112,16 +115,20 @@ class FooterHome extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
-                        width: 200,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            ctrl.sendEmail(context);
-                          },
-                          child: const Text('Enviar mensagem'),
-                        ),
-                      ),
+                      Obx(() {
+                        return SizedBox(
+                          width: 200,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              ctrl.sendEmail(context);
+                            },
+                            child: ctrl.isSendEmailLoading.value
+                                ? const CircularProgressIndicator(color: Colors.white)
+                                : const Text('Enviar mensagem'),
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -134,21 +141,22 @@ class FooterHome extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Icons.location_on_outlined),
-                        (widthMedia < 1000 && widthMedia > 750) || widthMedia > 1250
+                        (widthMedia < 1000 && widthMedia > 750) ||
+                            widthMedia > 1250
                             ? const Text("GenOne Soluções em Biotecnologia")
                             : const Text("GenOne Soluções\nem Biotecnologia"),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Icon(Icons.phone),
                         Text("Tel: (21) 3285-9105"),
                       ],
                     ),
                     const SizedBox(height: 15),
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         Icon(Icons.email),
                         Text(
                           " Mensagem:",

@@ -26,7 +26,7 @@ class PublicationsPage extends StatelessWidget {
                       "CASOS DE SUCESSO E PUBLICAÇÕES DE CLIENTES GENONE",
                       maxLines: 1,
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 24,
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -46,7 +46,7 @@ class PublicationsPage extends StatelessWidget {
                                   ctrl.texts[i],
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 16,
                                   ),
                                 ),
                                 TextButton(
