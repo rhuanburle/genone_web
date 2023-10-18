@@ -1,5 +1,3 @@
-import 'package:genone_web_flutter/data/model/payment_method.dart';
-
 class UserRegister {
   String name;
   String email;

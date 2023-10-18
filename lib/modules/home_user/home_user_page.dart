@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/global_widgets/appBar_customized.dart';
-import 'package:genone_web_flutter/modules/home/widgets/footer_home.dart';
 import 'package:genone_web_flutter/modules/home_user/home_user_controller.dart';
 import 'package:genone_web_flutter/modules/home_user/widgets/options_block_widget.dart';
 import 'package:genone_web_flutter/modules/home_user/widgets/personal_data_widget.dart';
@@ -23,10 +22,10 @@ class HomeUserPage extends StatelessWidget {
             return Container(
               constraints: const BoxConstraints(maxWidth: 1366),
               child: ctrl.isInitLoading.value
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 200),
+                  ? const Padding(
+                      padding: EdgeInsets.only(top: 200),
                       child: Column(
-                        children: const [
+                        children: [
                           Text(
                             "Loading...",
                             style: TextStyle(fontSize: 20),
@@ -49,11 +48,17 @@ class HomeUserPage extends StatelessWidget {
                             if (widthMedia > 1080)
                               Image.asset(
                                 AppImages.logoGenoneSmall,
-                                width: widthMedia >= 1366 ? 500 : widthMedia <= 1086 ? 300 : widthMedia * 0.3,
+                                width: widthMedia >= 1366
+                                    ? 500
+                                    : widthMedia <= 1086
+                                        ? 300
+                                        : widthMedia * 0.3,
                                 color: Colors.blue,
                               ),
                             Column(
-                              crossAxisAlignment: widthMedia > 1080 ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                              crossAxisAlignment: widthMedia > 1080
+                                  ? CrossAxisAlignment.start
+                                  : CrossAxisAlignment.center,
                               children: [
                                 const Padding(
                                   padding: EdgeInsets.only(top: 50, bottom: 10),
@@ -62,10 +67,10 @@ class HomeUserPage extends StatelessWidget {
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
-                                Wrap(
+                                const Wrap(
                                   spacing: 20,
                                   runSpacing: 20,
-                                  children: const [
+                                  children: [
                                     PersonalDataWidget(
                                       name: "Dados Pessoais",
                                       icon: Icons.person_pin,
@@ -86,10 +91,10 @@ class HomeUserPage extends StatelessWidget {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Wrap(
+                                const Wrap(
                                   spacing: 20,
                                   runSpacing: 20,
-                                  children: const [
+                                  children: [
                                     OptionsBlocWidget(
                                       name: "Pedidos Online",
                                       icon: Icons.shopping_cart_outlined,

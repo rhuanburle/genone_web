@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genone_web_flutter/global_widgets/appBar_customized.dart';
 import 'package:genone_web_flutter/global_widgets/footer.dart';
 import 'package:genone_web_flutter/modules/genes_info/genes_info_controller.dart';
+import 'package:genone_web_flutter/routes/app_routes.dart';
 import 'package:genone_web_flutter/utils/app_images.dart';
 import 'package:genone_web_flutter/utils/app_text.dart';
 import 'package:get/get.dart';
@@ -118,6 +119,23 @@ class GenesInfoPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                           ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          width: 200,
+                          height: 50,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor:Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              onPressed: () {
+                                Get.toNamed(AppRoutes.plasmideosAvailablePage);
+                              },
+                              child: const Text("Vetores Grátis!")),
                         ),
                       ],
                     ),

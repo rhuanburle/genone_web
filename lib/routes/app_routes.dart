@@ -9,4 +9,5 @@ class AppRoutes {
   static const String privacyPolicyPage = "/privacy_policy_page.dart";
   static const String genesInfoPage = "/genes_info_page.dart";
   static const String oligonucleotideosInfoPage = "/oligonucleotideos_info_page.dart";
+  static const String plasmideosAvailablePage = "/plasmideos_available_page.dart";
 }
