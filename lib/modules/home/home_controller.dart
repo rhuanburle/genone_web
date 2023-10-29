@@ -50,8 +50,6 @@ class HomeController extends GetxController with AppUtil {
             subject: subjectController.text,
             message: messageController.text,
             dateCreate: dateNow);
-
-
         bool isSendOk = await repositoryApi.sendContactEmail(emailContact: emailContact);
 
         showInfoDialog(isSendOk: isSendOk, context: context);

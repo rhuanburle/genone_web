@@ -10,11 +10,8 @@ class ServiceSendEmail with ChangeNotifier, AppUtil {
 
   sendContactEmail({required EmailContact emailContact}) async {
     try {
-
       final data = emailContact.toJson();
-
       final response = await dio.post(url, data: data);
-
       if (response.statusCode == 200) {
         return true;
       } else {

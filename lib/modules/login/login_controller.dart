@@ -18,10 +18,11 @@ class LoginController extends GetxController with AppUtil {
 
   Future getLogin(context) async {
     try{
-      isLoading.value = true;
-      final response = await repositoryApi.signIn(email: emailController.text, password: passwordController.text);
-
-      checkLoginStatus(response, isFistLogin, context);
+      // isLoading.value = true;
+      // final response = await repositoryApi.signIn(email: emailController.text, password: passwordController.text);
+      //
+      // checkLoginStatus(response, isFistLogin, context);
+      Get.toNamed(AppRoutes.homeUserPage);
     } catch (e) {
       loggerError(message: e.toString());
     } finally {

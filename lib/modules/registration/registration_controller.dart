@@ -22,35 +22,36 @@ class RegistrationController extends GetxController with AppUtil {
   final repositoryApi = Get.find<RepositoryApi>();
 
   void register() {
-    if (passwordController.text == confirmPasswordController.text) {
-      if (emailController.text.isNotEmpty &&
-          passwordController.text.isNotEmpty &&
-          isEmailValid(emailController.text) &&
-          verificaSenha(passwordController.text)) {
-        Get.toNamed(AppRoutes.registerUserPage, arguments: {"email": emailController.text, "password": passwordController.text});
-      } else if (!isEmailValid(emailController.text) &&
-          emailController.text.isNotEmpty) {
-        showDialogGeneral(
-            title: 'Atenção', message: 'Email inválido', context: Get.context!);
-      } else if (!verificaSenha(passwordController.text) &&
-          passwordController.text.isNotEmpty) {
-        showDialogGeneral(
-            title: 'Atenção',
-            message:
-                'A senha deve conter no mínimo 8 caracteres, uma letra, um simbolo e um número',
-            context: Get.context!);
-      } else {
-        showDialogGeneral(
-            title: 'Atenção',
-            message: 'Preencha todos os campos',
-            context: Get.context!);
-      }
-    } else {
-      showDialogGeneral(
-          title: 'Atenção',
-          message: 'As senhas não coincidem',
-          context: Get.context!);
-    }
+    // if (passwordController.text == confirmPasswordController.text) {
+    //   if (emailController.text.isNotEmpty &&
+    //       passwordController.text.isNotEmpty &&
+    //       isEmailValid(emailController.text) &&
+    //       verificaSenha(passwordController.text)) {
+    //     Get.toNamed(AppRoutes.registerUserPage, arguments: {"email": emailController.text, "password": passwordController.text});
+    //   } else if (!isEmailValid(emailController.text) &&
+    //       emailController.text.isNotEmpty) {
+    //     showDialogGeneral(
+    //         title: 'Atenção', message: 'Email inválido', context: Get.context!);
+    //   } else if (!verificaSenha(passwordController.text) &&
+    //       passwordController.text.isNotEmpty) {
+    //     showDialogGeneral(
+    //         title: 'Atenção',
+    //         message:
+    //             'A senha deve conter no mínimo 8 caracteres, uma letra, um simbolo e um número',
+    //         context: Get.context!);
+    //   } else {
+    //     showDialogGeneral(
+    //         title: 'Atenção',
+    //         message: 'Preencha todos os campos',
+    //         context: Get.context!);
+    //   }
+    // } else {
+    //   showDialogGeneral(
+    //       title: 'Atenção',
+    //       message: 'As senhas não coincidem',
+    //       context: Get.context!);
+    // }
+    Get.toNamed(AppRoutes.registerUserPage, arguments: {"email": emailController.text, "password": passwordController.text});
   }
 
   showDialogGeneral(
